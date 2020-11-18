@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049B5F7925657B3800A00082 /* SecureEnclaveSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B5F7825657B3800A00082 /* SecureEnclaveSigner.swift */; };
 		5FB760497BB7711EFB470B5A /* ECKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB76A41AECF99F3673C1C40 /* ECKeys.swift */; };
 		5FB76093CE81BF1F8E7C254A /* JWKECDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7625CF5EF5D8F2135967F /* JWKECDecodingTests.swift */; };
 		5FB7628EC6EA2C4263853DE9 /* DataECPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7604267B94DC5091D7105 /* DataECPrivateKey.swift */; };
@@ -133,6 +134,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		049B5F7825657B3800A00082 /* SecureEnclaveSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureEnclaveSigner.swift; sourceTree = "<group>"; };
 		5FB7604267B94DC5091D7105 /* DataECPrivateKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataECPrivateKey.swift; sourceTree = "<group>"; };
 		5FB760DB390F90F91102DB74 /* EC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EC.swift; sourceTree = "<group>"; };
 		5FB7625CF5EF5D8F2135967F /* JWKECDecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWKECDecodingTests.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 				65D8680E1F7CE35000769BBF /* RSAVerifier.swift */,
 				5FB76AF2833DDD77D56D6D3F /* ECSigner.swift */,
 				5FB767ECBB50E5A47C671DC1 /* ECVerifier.swift */,
+				049B5F7825657B3800A00082 /* SecureEnclaveSigner.swift */,
 			);
 			name = CryptoInterface;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				8A30B8F822118FD0001834E3 /* DeflateWrapper.swift in Sources */,
 				612B0C94248E1C83009F1929 /* Thumbprint.swift in Sources */,
 				65D8E8EA20F4AF880059506A /* SymmetricKeyCodable.swift in Sources */,
+				049B5F7925657B3800A00082 /* SecureEnclaveSigner.swift in Sources */,
 				C85B1EF6204D82970026BDCB /* RSASigner.swift in Sources */,
 				65344C3E20F4CC9000FCBBA1 /* DataSymmetricKey.swift in Sources */,
 				65D868111F7CEBA200769BBF /* Verifier.swift in Sources */,

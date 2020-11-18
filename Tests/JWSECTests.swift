@@ -22,6 +22,7 @@
 //  ---------------------------------------------------------------------------
 //
 
+import CryptoKit
 import XCTest
 @testable import JOSESwift
 
@@ -45,6 +46,18 @@ class JWSECTests: ECCryptoTestCase {
         allTestData.forEach { testData in
             self.performTestECDeserialization(testData: testData)
         }
+    }
+    
+    @available(iOS 13, *)
+    func testSecureEnclaveSignAndSerialize() throws {
+        let algorithm = SignatureAlgorithm.PS256
+        let header = JWSHeader(algorithm: algorithm)
+        let plainTextPayload = "foobar"
+        let payload = Payload(plainTextPayload.data(using: .utf8)!)
+        let privateKey = try SecureEnclave.P256.Signing.PrivateKey()
+        let signer = Signer(signingAlgorithm: algorithm, privateKey: privateKey)!
+        let jws = try! JWS(header: header, payload: payload, signer: signer)
+        let compact = jws.compactSerializedString
     }
 
     // MARK: - EC Tests

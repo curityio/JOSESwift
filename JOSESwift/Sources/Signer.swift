@@ -23,6 +23,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 protocol SignerProtocol {
     var algorithm: SignatureAlgorithm { get }
@@ -53,11 +54,14 @@ struct Signer<KeyType> {
             // swiftlint:disable:next force_cast
             self.signer = RSASigner(algorithm: signingAlgorithm, privateKey: privateKey as! RSASigner.KeyType)
         case .ES256, .ES384, .ES512:
-            guard type(of: privateKey) is ECSigner.KeyType.Type else {
+            if type(of: privateKey) is RSASigner.KeyType.Type {
+                self.signer = ECSigner(algorithm: signingAlgorithm, privateKey: privateKey as! ECSigner.KeyType)
+            } else if #available(iOS 13.0, *),
+                      type(of: privateKey) is SecureEnclave.P256.Signing.PrivateKey.Type {
+                self.signer = SecureEnclaveSigner(algorithm: signingAlgorithm, privateKey: privateKey as! SecureEnclave.P256.Signing.PrivateKey)
+            } else {
                 return nil
             }
-            // swiftlint:disable:next force_cast
-            self.signer = ECSigner(algorithm: signingAlgorithm, privateKey: privateKey as! ECSigner.KeyType)
         }
     }
 
