@@ -47,7 +47,8 @@ class JWSECTests: ECCryptoTestCase {
             self.performTestECDeserialization(testData: testData)
         }
     }
-    
+
+    // FIXME: This test case cannot run on simulator
     @available(iOS 13, *)
     func testSecureEnclaveSignAndSerialize() throws {
         let algorithm = SignatureAlgorithm.PS256
