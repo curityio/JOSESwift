@@ -22,8 +22,8 @@
 //  ---------------------------------------------------------------------------
 //
 
-import Foundation
 import CryptoKit
+import Foundation
 
 protocol SignerProtocol {
     var algorithm: SignatureAlgorithm { get }
@@ -54,7 +54,7 @@ struct Signer<KeyType> {
             // swiftlint:disable:next force_cast
             self.signer = RSASigner(algorithm: signingAlgorithm, privateKey: privateKey as! RSASigner.KeyType)
         case .ES256, .ES384, .ES512:
-            if type(of: privateKey) is RSASigner.KeyType.Type {
+            if type(of: privateKey) is ECSigner.KeyType.Type {
                 self.signer = ECSigner(algorithm: signingAlgorithm, privateKey: privateKey as! ECSigner.KeyType)
             } else if #available(iOS 13.0, *),
                       type(of: privateKey) is SecureEnclave.P256.Signing.PrivateKey.Type {

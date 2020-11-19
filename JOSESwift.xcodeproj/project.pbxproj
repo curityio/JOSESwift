@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		049B5F7925657B3800A00082 /* SecureEnclaveSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B5F7825657B3800A00082 /* SecureEnclaveSigner.swift */; };
+		049B5F862566731600A00082 /* SecureEnclaveVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049B5F852566731600A00082 /* SecureEnclaveVerifier.swift */; };
 		5FB760497BB7711EFB470B5A /* ECKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB76A41AECF99F3673C1C40 /* ECKeys.swift */; };
 		5FB76093CE81BF1F8E7C254A /* JWKECDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7625CF5EF5D8F2135967F /* JWKECDecodingTests.swift */; };
 		5FB7628EC6EA2C4263853DE9 /* DataECPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB7604267B94DC5091D7105 /* DataECPrivateKey.swift */; };
@@ -135,6 +136,7 @@
 
 /* Begin PBXFileReference section */
 		049B5F7825657B3800A00082 /* SecureEnclaveSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureEnclaveSigner.swift; sourceTree = "<group>"; };
+		049B5F852566731600A00082 /* SecureEnclaveVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureEnclaveVerifier.swift; sourceTree = "<group>"; };
 		5FB7604267B94DC5091D7105 /* DataECPrivateKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataECPrivateKey.swift; sourceTree = "<group>"; };
 		5FB760DB390F90F91102DB74 /* EC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EC.swift; sourceTree = "<group>"; };
 		5FB7625CF5EF5D8F2135967F /* JWKECDecodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWKECDecodingTests.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				5FB76AF2833DDD77D56D6D3F /* ECSigner.swift */,
 				5FB767ECBB50E5A47C671DC1 /* ECVerifier.swift */,
 				049B5F7825657B3800A00082 /* SecureEnclaveSigner.swift */,
+				049B5F852566731600A00082 /* SecureEnclaveVerifier.swift */,
 			);
 			name = CryptoInterface;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				65617FCD1F90FB7600D8C743 /* RSAKeyEncryptionMode.swift in Sources */,
 				65617FCB1F90F8C700D8C743 /* Encrypter.swift in Sources */,
 				65E733CC1FEBE8320009EAC6 /* JWKExtensions.swift in Sources */,
+				049B5F862566731600A00082 /* SecureEnclaveVerifier.swift in Sources */,
 				6536560D2035DF8300A3AC3B /* JWKSetCodable.swift in Sources */,
 				6546FB0F2029DD10002E421F /* SecKeyRSAPublicKey.swift in Sources */,
 				6572C2F21F96428800D4186D /* Decrypter.swift in Sources */,
