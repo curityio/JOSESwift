@@ -24,7 +24,7 @@
 import Foundation
 
 extension Data: ExpressibleAsRSAPublicKeyComponents {
-    public static func representing(rsaPublicKeyComponents components: RSAPublicKeyComponents) throws -> Data {
+    static func representing(rsaPublicKeyComponents components: RSAPublicKeyComponents) throws -> Data {
         var modulusBytes = [UInt8](components.modulus)
         let exponentBytes = [UInt8](components.exponent)
 
@@ -41,7 +41,7 @@ extension Data: ExpressibleAsRSAPublicKeyComponents {
         return Data(sequenceEncoded)
     }
 
-    public func rsaPublicKeyComponents() throws -> RSAPublicKeyComponents {
+    func rsaPublicKeyComponents() throws -> RSAPublicKeyComponents {
         let publicKeyBytes = [UInt8](self)
 
         let sequence = try publicKeyBytes.read(.sequence)

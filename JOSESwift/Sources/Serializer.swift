@@ -23,16 +23,16 @@
 
 import Foundation
 
-public protocol CompactSerializable {
+protocol CompactSerializable {
     func serialize(to serializer: inout CompactSerializer)
 }
 
-public protocol CompactSerializer {
+protocol CompactSerializer {
     var components: [DataConvertible] { get }
     mutating func serialize<T: DataConvertible>(_ object: T)
 }
 
-public struct JOSESerializer {
+struct JOSESerializer {
     public func serialize<T: CompactSerializable>(compact object: T) -> String {
         var serializer: CompactSerializer = _CompactSerializer()
         object.serialize(to: &serializer)

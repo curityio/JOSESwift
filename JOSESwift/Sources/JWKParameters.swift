@@ -26,7 +26,7 @@ import Foundation
 
 /// Possible common JWK parameters.
 /// See [RFC-7517, Section 4](https://tools.ietf.org/html/rfc7517#section-4) for details.
-public enum JWKParameter: String, CodingKey {
+enum JWKParameter: String, CodingKey {
     case keyType = "kty"
     case keyUse = "use"
     case keyOperations = "key_ops"
@@ -45,7 +45,7 @@ public enum JWKParameter: String, CodingKey {
 
 /// RSA specific JWK parameters.
 /// See [RFC-7518, Section 6.3](https://tools.ietf.org/html/rfc7518#section-6.3) for details.
-public enum RSAParameter: String, CodingKey {
+enum RSAParameter: String, CodingKey {
     case modulus = "n"
     case exponent = "e"
     case privateExponent = "d"
@@ -53,13 +53,13 @@ public enum RSAParameter: String, CodingKey {
 
 /// Symmetric key specific JWK parameters.
 /// See [RFC-7518, Section 6.3](https://tools.ietf.org/html/rfc7518#section-6.4) for details.
-public enum SymmetricKeyParameter: String, CodingKey {
+enum SymmetricKeyParameter: String, CodingKey {
     case key = "k"
 }
 
 /// EC specific JWK parameters.
 /// See [RFC-7518, Section 6.2](https://tools.ietf.org/html/rfc7518#section-6.2) for details.
-public enum ECParameter: String, CodingKey {
+enum ECParameter: String, CodingKey {
     case curve = "crv"
     case x = "x"
     case y = "y"

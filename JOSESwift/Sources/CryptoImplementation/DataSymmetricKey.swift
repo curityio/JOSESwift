@@ -24,11 +24,11 @@
 import Foundation
 
 extension Data: ExpressibleAsSymmetricKeyComponents {
-    public static func representing(symmetricKeyComponents components: SymmetricKeyComponents) throws -> Data {
+    static func representing(symmetricKeyComponents components: SymmetricKeyComponents) throws -> Data {
         return components
     }
 
-    public func symmetricKeyComponents() throws -> SymmetricKeyComponents {
+    func symmetricKeyComponents() throws -> SymmetricKeyComponents {
         return self
     }
 }

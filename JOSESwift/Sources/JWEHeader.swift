@@ -24,7 +24,7 @@
 import Foundation
 
 /// The header of a `JWE` object.
-public struct JWEHeader: JOSEHeader {
+struct JWEHeader: JOSEHeader {
     var headerData: Data
     var parameters: [String: Any] {
         didSet {
@@ -90,7 +90,7 @@ public struct JWEHeader: JOSEHeader {
 }
 
 // Header parameters that are specific to a JWE Header.
-public extension JWEHeader {
+extension JWEHeader {
     /// The algorithm used to encrypt or determine the value of the Content Encryption Key.
     var keyManagementAlgorithm: KeyManagementAlgorithm? {
         // Forced cast is ok here since we checked both that "alg" exists
@@ -276,7 +276,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
 
 // MARK: - Deprecated API
 
-public extension JWEHeader {
+extension JWEHeader {
     /// The algorithm used to encrypt or determine the value of the Content Encryption Key.
     @available(*, deprecated, message: "Use `JWEHeader.keyManagementAlgorithm` instead")
     var algorithm: AsymmetricKeyAlgorithm? {

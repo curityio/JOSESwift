@@ -24,7 +24,7 @@
 
 import Foundation
 
-public enum JOSESwiftError: Error {
+enum JOSESwiftError: Error {
     case signingFailed(description: String)
     case verifyingFailed(description: String)
     case signatureInvalid

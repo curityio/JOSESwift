@@ -31,7 +31,7 @@ import Foundation
 /// - Note:
 /// To ensure proper JWK JSON encoding, the component data must refer to the unsigned big-endian octet representation
 /// of the component's values, encoded using the minimum amount of octets needed to represent the value.
-public typealias ECPublicKeyComponents = (
+typealias ECPublicKeyComponents = (
         crv: String,
         x: Data,
         y: Data
@@ -43,7 +43,7 @@ public typealias ECPublicKeyComponents = (
 /// - Note:
 /// To ensure proper JWK JSON encoding, the component data must refer to the unsigned big-endian octet representation
 /// of the component's values, encoded using the minimum amount of octets needed to represent the value.
-public typealias ECPrivateKeyComponents = (
+typealias ECPrivateKeyComponents = (
         crv: String,
         x: Data,
         y: Data,
@@ -53,7 +53,7 @@ public typealias ECPrivateKeyComponents = (
 /// A type that represents an EC public key.
 /// It can be expressed through `ECPublicKeyComponents` meaning it can be converted to such components
 /// and it can be created from such components.
-public protocol ExpressibleAsECPublicKeyComponents {
+protocol ExpressibleAsECPublicKeyComponents {
 
     /// Creates an object that contains the supplied components in the format specified by ANSI X9.63
     ///
@@ -72,7 +72,7 @@ public protocol ExpressibleAsECPublicKeyComponents {
 /// A type that represents an EC private key.
 /// It can be expressed through `ECPrivateKeyComponents` meaning it can be converted to such components
 /// and it can be created from such components.
-public protocol ExpressibleAsECPrivateKeyComponents {
+protocol ExpressibleAsECPrivateKeyComponents {
 
     /// Creates an object that contains the supplied components in the format specified by ANSI X9.63
     ///
@@ -91,7 +91,7 @@ public protocol ExpressibleAsECPrivateKeyComponents {
 // MARK: Public Key
 
 /// A JWK holding an EC public key.
-public struct ECPublicKey: JWK {
+struct ECPublicKey: JWK {
     /// The JWK key type.
     public let keyType: JWKKeyType
 
@@ -210,7 +210,7 @@ public struct ECPublicKey: JWK {
 // MARK: Private Key
 
 /// A JWK holding an EC private key.
-public struct ECPrivateKey: JWK {
+struct ECPrivateKey: JWK {
     /// The JWK key type.
     public let keyType: JWKKeyType
 
@@ -341,4 +341,4 @@ public struct ECPrivateKey: JWK {
 
 // MARK: Key Pair
 
-public typealias ECKeyPair = ECPrivateKey
+typealias ECKeyPair = ECPrivateKey

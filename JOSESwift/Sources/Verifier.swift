@@ -37,7 +37,7 @@ protocol VerifierProtocol {
     func verify(_ signingInput: Data, against signature: Data) throws -> Bool
 }
 
-public struct Verifier {
+struct Verifier {
     let verifier: VerifierProtocol
 
     /// Constructs a verifyer used to verify a JWS.

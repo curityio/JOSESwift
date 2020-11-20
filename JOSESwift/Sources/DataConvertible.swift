@@ -23,7 +23,7 @@
 
 import Foundation
 
-public protocol DataConvertible {
+protocol DataConvertible {
     init?(_ data: Data)
     func data() -> Data
 }

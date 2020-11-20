@@ -30,7 +30,7 @@ internal enum JWSError: Error {
 
 /// A JWS object consisting of a header, payload and signature. The three components of a JWS object
 /// cannot be changed once the object is initialized.
-public struct JWS {
+struct JWS {
     public let header: JWSHeader
     public let payload: Payload
     public let signature: Data
@@ -41,7 +41,7 @@ public struct JWS {
     }
 
     /// The compact serialization of this JWS object as data.
-    public var compactSerializedData: Data {
+    var compactSerializedData: Data {
         // Force unwrapping is ok here, since `serialize` returns a string generated from data.
         // swiftlint:disable:next force_unwrapping
         return JOSESerializer().serialize(compact: self).data(using: .utf8)!
@@ -54,7 +54,7 @@ public struct JWS {
     ///   - payload: A fully initialized `Payload`.
     ///   - signer: The `Signer` used to compute the JWS signature from the header and payload.
     /// - Throws: `JOSESwiftError` if any error occurs while signing. 
-    public init<KeyType>(header: JWSHeader, payload: Payload, signer: Signer<KeyType>) throws {
+    init<KeyType>(header: JWSHeader, payload: Payload, signer: Signer<KeyType>) throws {
         self.header = header
         self.payload = payload
 
@@ -169,7 +169,7 @@ public struct JWS {
     /// - Parameter verifier: The verifier containing the public key whose corresponding private key signed the JWS.
     /// - Returns: The JWS on which this function was called if the signature is valid.
     /// - Throws: A `JOSESwiftError` if the signature is invalid or if errors occured during signature validation.
-    public func validate(using verifier: Verifier) throws -> JWS {
+    func validate(using verifier: Verifier) throws -> JWS {
         guard verifier.verifier.algorithm == header.algorithm else {
             throw JOSESwiftError.verifyingFailed(description: "JWS header algorithm does not match verifier algorithm.")
         }
@@ -190,7 +190,7 @@ public struct JWS {
     /// - Parameter verifier: The verifier containing the public key whose corresponding private key signed the JWS.
     /// - Returns: `true` if the JWS's signature is valid for the given verifier and the JWS's header and payload.
     ///            `false` if the signature is not valid or if the singature could not be verified.
-    public func isValid(for verifier: Verifier) -> Bool {
+    func isValid(for verifier: Verifier) -> Bool {
         guard verifier.verifier.algorithm == header.algorithm else {
             return false
         }

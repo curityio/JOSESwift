@@ -23,16 +23,16 @@
 
 import Foundation
 
-public protocol CompactDeserializable {
+protocol CompactDeserializable {
     static var componentCount: Int { get }
     init(from deserializer: CompactDeserializer) throws
 }
 
-public protocol CompactDeserializer {
+protocol CompactDeserializer {
     func deserialize<T: DataConvertible>(_ type: T.Type, at index: Int) throws -> T
 }
 
-public struct JOSEDeserializer {
+struct JOSEDeserializer {
     public init() { }
 
     public func deserialize<T: CompactDeserializable>(_ type: T.Type, fromCompactSerialization compactSerialization: String) throws -> T {
@@ -68,7 +68,7 @@ private struct _CompactDeserializer: CompactDeserializer {
     }
 }
 
-public enum ComponentCompactSerializedIndex {
+enum ComponentCompactSerializedIndex {
     static let jwsHeaderIndex = 0
     static let jwsPayloadIndex = 1
     static let jwsSignatureIndex = 2

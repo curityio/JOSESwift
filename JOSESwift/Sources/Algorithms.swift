@@ -27,7 +27,7 @@ import Foundation
 /// Cryptographic algorithms for digital signatures and MACs.
 ///
 /// See [RFC 7518, Section 3](https://tools.ietf.org/html/rfc7518#section-3).
-public enum SignatureAlgorithm: String {
+enum SignatureAlgorithm: String {
     /// RSASSA-PKCS1-v1_5 using SHA-256
     case RS256
     /// RSASSA-PKCS1-v1_5 using SHA-384
@@ -51,7 +51,7 @@ public enum SignatureAlgorithm: String {
 /// Cryptographic algorithms for key management.
 ///
 /// See [RFC 7518, Section 4](https://tools.ietf.org/html/rfc7518#section-4).
-public enum KeyManagementAlgorithm: String, CaseIterable {
+enum KeyManagementAlgorithm: String, CaseIterable {
     /// Key encryption using RSAES-PKCS1-v1_5
     case RSA1_5 = "RSA1_5"
     /// Key encryption using RSAES OAEP using SHA-1 and MGF1 with SHA-1
@@ -71,7 +71,7 @@ public enum KeyManagementAlgorithm: String, CaseIterable {
 /// Cryptographic algorithms for content encryption.
 ///
 /// See [RFC 7518, Section 5](https://tools.ietf.org/html/rfc7518#section-5).
-public enum ContentEncryptionAlgorithm: String {
+enum ContentEncryptionAlgorithm: String {
     /// Content encryption using AES_256_CBC_HMAC_SHA_512
     case A256CBCHS512 = "A256CBC-HS512"
     /// Content encryption using AES_128_CBC_HMAC_SHA_256
@@ -82,7 +82,7 @@ public enum ContentEncryptionAlgorithm: String {
 ///
 /// - SHA512
 /// - SHA256
-public enum HMACAlgorithm: String {
+enum HMACAlgorithm: String {
     case SHA512
     case SHA256
 
@@ -99,7 +99,7 @@ public enum HMACAlgorithm: String {
 /// An algorithm for JWK Thumbprint calculation.
 ///
 /// - SHA256
-public enum JWKThumbprintAlgorithm: String {
+enum JWKThumbprintAlgorithm: String {
     case SHA256
 }
 
@@ -107,7 +107,7 @@ public enum JWKThumbprintAlgorithm: String {
 /// List of [supported compression algorithms](https://www.iana.org/assignments/jose/jose.xhtml#web-encryption-compression-algorithms)
 ///
 /// - Deflate: [DEF](https://tools.ietf.org/html/rfc7516#section-4.1.3)
-public enum CompressionAlgorithm: String {
+enum CompressionAlgorithm: String {
     case DEFLATE = "DEF"
     case NONE = "NONE"
 }
@@ -115,7 +115,7 @@ public enum CompressionAlgorithm: String {
 // MARK: - Deprecated API
 
 @available(*, deprecated, message: "Use `KeyManagementAlgorithm` instead")
-public typealias AsymmetricKeyAlgorithm = KeyManagementAlgorithm
+typealias AsymmetricKeyAlgorithm = KeyManagementAlgorithm
 
 @available(*, deprecated, message: "Use `ContentEncryptionAlgorithm` instead")
-public typealias SymmetricKeyAlgorithm = ContentEncryptionAlgorithm
+typealias SymmetricKeyAlgorithm = ContentEncryptionAlgorithm

@@ -25,7 +25,7 @@ import Foundation
 
 // MARK: Subscript
 
-public extension JWK {
+extension JWK {
     subscript(parameter: String) -> String? {
         return parameters[parameter]
     }
@@ -33,7 +33,7 @@ public extension JWK {
 
 // MARK: Encoding Convenience Functions
 
-public extension JWK {
+extension JWK {
     func jsonString() -> String? {
         guard let json = try? JSONEncoder().encode(self) else {
             return nil

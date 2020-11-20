@@ -35,7 +35,7 @@ protocol SignerProtocol {
     func sign(_ signingInput: Data) throws -> Data
 }
 
-public struct Signer<KeyType> {
+struct Signer<KeyType> {
     let signer: SignerProtocol
 
     /// Constructs a signer used to sign a JWS.

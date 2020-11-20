@@ -24,7 +24,7 @@
 import Foundation
 
 extension Data: ExpressibleAsECPrivateKeyComponents {
-    public static func representing(ecPrivateKeyComponents components: ECPrivateKeyComponents) throws -> Data {
+    static func representing(ecPrivateKeyComponents components: ECPrivateKeyComponents) throws -> Data {
         let xBytes = [UInt8](components.x)
         let yBytes = [UInt8](components.y)
         let dBytes = [UInt8](components.d)
@@ -40,7 +40,7 @@ extension Data: ExpressibleAsECPrivateKeyComponents {
         return Data(uncompressedIndication + xBytes + yBytes + dBytes)
     }
 
-    public func ecPrivateKeyComponents() throws -> ECPrivateKeyComponents {
+    func ecPrivateKeyComponents() throws -> ECPrivateKeyComponents {
         var privateKeyBytes = [UInt8](self)
 
         guard privateKeyBytes.removeFirst() == ECCompression.Uncompressed.rawValue else {

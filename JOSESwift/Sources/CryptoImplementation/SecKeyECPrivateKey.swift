@@ -25,7 +25,7 @@ import Foundation
 import Security
 
 extension SecKey: ExpressibleAsECPrivateKeyComponents {
-    public static func representing(ecPrivateKeyComponents components: ECPrivateKeyComponents) throws -> Self {
+    static func representing(ecPrivateKeyComponents components: ECPrivateKeyComponents) throws -> Self {
         return try instantiate(type: self, from: components)
     }
 
@@ -59,7 +59,7 @@ extension SecKey: ExpressibleAsECPrivateKeyComponents {
         return key
     }
 
-    public func ecPrivateKeyComponents() throws -> ECPrivateKeyComponents {
+    func ecPrivateKeyComponents() throws -> ECPrivateKeyComponents {
         guard
                 let attributes = SecKeyCopyAttributes(self) as? [CFString: AnyObject],
                 let keyClass = attributes[kSecAttrKeyClass],

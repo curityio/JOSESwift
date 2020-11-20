@@ -39,7 +39,7 @@ internal enum ECError: Error {
 
 /// Identifies the curve type parameter of a JWK representing an elliptic curve key
 /// See [RFC-7518](https://tools.ietf.org/html/rfc7518#section-7.4) for details.
-public enum ECCurveType: String, Codable {
+enum ECCurveType: String, Codable {
     case P256 = "P-256"
     case P384 = "P-384"
     case P521 = "P-521"
@@ -127,7 +127,7 @@ fileprivate extension SignatureAlgorithm {
 }
 
 // Point compression prefix. Based on X9.62, Section 4.3.6
-public enum ECCompression: UInt8 {
+enum ECCompression: UInt8 {
     case CompressedYEven = 0x02
     case CompressedYOdd = 0x03
     case Uncompressed = 0x04 // supported only

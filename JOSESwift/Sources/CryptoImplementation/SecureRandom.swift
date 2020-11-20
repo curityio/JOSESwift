@@ -24,12 +24,12 @@
 import Foundation
 import Security
 
-public enum SecureRandomError: Error {
+enum SecureRandomError: Error {
     case failed(status: OSStatus)
     case countMustBeGreaterThanZero
 }
 
-public struct SecureRandom {
+struct SecureRandom {
     /// Generates secure random data with a given count.
     ///
     /// - Parameter count: The count of the random generated data. Must be greater than 0.

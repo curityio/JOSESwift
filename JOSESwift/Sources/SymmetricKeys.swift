@@ -26,14 +26,14 @@ import Foundation
 // MARK: Protocols
 
 /// The components of a symmetric key.
-public typealias SymmetricKeyComponents = (
+typealias SymmetricKeyComponents = (
     Data
 )
 
 /// A type that represents a symmetric key.
 /// It can be expressed through `SymmetricKeyComponents` meaning it can be converted to such components
 /// and it can be created from such components.
-public protocol ExpressibleAsSymmetricKeyComponents {
+protocol ExpressibleAsSymmetricKeyComponents {
 
     /// Creates an object that contains the supplied components.
     ///
@@ -52,7 +52,7 @@ public protocol ExpressibleAsSymmetricKeyComponents {
 // MARK: Key
 
 /// A JWK holding a symmetric key.
-public struct SymmetricKey: JWK {
+struct SymmetricKey: JWK {
     /// The JWK key type.
     public let keyType: JWKKeyType
 

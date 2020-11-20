@@ -24,7 +24,7 @@
 import Foundation
 
 // Todo [#214]: Move generic type to initializer in next major release.
-public struct Encrypter<KeyType> {
+struct Encrypter<KeyType> {
     private let keyManagementMode: EncryptionKeyManagementMode
     private let keyManagementAlgorithm: KeyManagementAlgorithm
     private let contentEncryptionAlgorithm: ContentEncryptionAlgorithm
@@ -104,7 +104,7 @@ extension Encrypter {
 }
 
 @available(*, deprecated, message: "This type will be removed with the next major release.")
-public struct EncryptionContext {
+struct EncryptionContext {
     let encryptedKey: Data
     let ciphertext: Data
     let authenticationTag: Data
@@ -112,7 +112,7 @@ public struct EncryptionContext {
 }
 
 @available(*, deprecated, message: "This type will be removed with the next major release.")
-public struct SymmetricEncryptionContext {
+struct SymmetricEncryptionContext {
     let ciphertext: Data
     let authenticationTag: Data
     let initializationVector: Data

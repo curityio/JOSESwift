@@ -31,7 +31,7 @@ import Foundation
 /// - Note:
 /// To ensure proper JWK JSON encoding, the component data must refer to the unsigned big-endian octet representation
 /// of the component's values, encoded using the minimum amount of octets needed to represent the value.
-public typealias RSAPublicKeyComponents = (
+typealias RSAPublicKeyComponents = (
     modulus: Data,
     exponent: Data
 )
@@ -42,7 +42,7 @@ public typealias RSAPublicKeyComponents = (
 /// - Note:
 /// To ensure proper JWK JSON encoding, the component data must refer to the unsigned big-endian octet representation
 /// of the component's values, encoded using the minimum amount of octets needed to represent the value.
-public typealias RSAPrivateKeyComponents = (
+typealias RSAPrivateKeyComponents = (
     modulus: Data,
     exponent: Data,
     privateExponent: Data
@@ -51,7 +51,7 @@ public typealias RSAPrivateKeyComponents = (
 /// A type that represents an RSA public key.
 /// It can be expressed through `RSAPublicKeyComponents` meaning it can be converted to such components
 /// and it can be created from such components.
-public protocol ExpressibleAsRSAPublicKeyComponents {
+protocol ExpressibleAsRSAPublicKeyComponents {
 
     /// Creates an object that contains the supplied components in the format specified by PKCS#1.
     ///
@@ -70,7 +70,7 @@ public protocol ExpressibleAsRSAPublicKeyComponents {
 /// A type that represents an RSA private key.
 /// It can be expressed through `RSAPrivateKeyComponents` meaning it can be converted to such components
 /// and it can be created from such components.
-public protocol ExpressibleAsRSAPrivateKeyComponents {
+protocol ExpressibleAsRSAPrivateKeyComponents {
 
     /// Creates an object that contains the supplied components in the format specified by PKCS#1.
     ///
@@ -89,7 +89,7 @@ public protocol ExpressibleAsRSAPrivateKeyComponents {
 // MARK: Public Key
 
 /// A JWK holding an RSA pubkic key.
-public struct RSAPublicKey: JWK {
+struct RSAPublicKey: JWK {
     /// The JWK key type.
     public let keyType: JWKKeyType
 
@@ -196,7 +196,7 @@ public struct RSAPublicKey: JWK {
 // MARK: Private Key
 
 /// A JWK holding an RSA private key.
-public struct RSAPrivateKey: JWK {
+struct RSAPrivateKey: JWK {
     /// The JWK key type.
     public let keyType: JWKKeyType
 
@@ -311,4 +311,4 @@ public struct RSAPrivateKey: JWK {
 
 // MARK: Key Pair
 
-public typealias RSAKeyPair = RSAPrivateKey
+typealias RSAKeyPair = RSAPrivateKey

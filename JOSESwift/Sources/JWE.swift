@@ -35,7 +35,7 @@ internal enum JWEError: Error {
 /// All representations of the JWE or it's parts like it's compact serialization or the plaintext can be derived from those five parameters.
 /// Therefore (and to keep immutability) it does not cache such representations.
 /// As discussed, it is the responsibility of the framework user to cache e.g. the plaintext. Of course this will have to be communicated clearly.
-public struct JWE {
+struct JWE {
     /// The JWE's JOSE Header.
     public let header: JWEHeader
 

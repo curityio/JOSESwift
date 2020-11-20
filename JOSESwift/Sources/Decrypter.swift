@@ -23,7 +23,7 @@
 
 import Foundation
 
-public struct Decrypter {
+struct Decrypter {
     private let keyManagementMode: DecryptionKeyManagementMode
 
     let keyManagementAlgorithm: KeyManagementAlgorithm
@@ -105,7 +105,7 @@ extension Decrypter {
 }
 
 @available(*, deprecated, message: "This type will be removed with the next major release.")
-public struct DecryptionContext {
+struct DecryptionContext {
     let header: JWEHeader
     let encryptedKey: Data
     let initializationVector: Data
@@ -114,7 +114,7 @@ public struct DecryptionContext {
 }
 
 @available(*, deprecated, message: "This type will be removed with the next major release.")
-public struct SymmetricDecryptionContext {
+struct SymmetricDecryptionContext {
     let ciphertext: Data
     let initializationVector: Data
     let additionalAuthenticatedData: Data

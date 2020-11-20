@@ -40,7 +40,7 @@ internal enum JWKError: Error {
 /// The key type parameter of a JWK identifies the cryptographic algorithm
 /// family used with the key(s) represented by a JWK.
 /// See [RFC-7518](https://tools.ietf.org/html/rfc7518#section-7.4) for details.
-public enum JWKKeyType: String, Codable {
+enum JWKKeyType: String, Codable {
     case RSA = "RSA"
     case OCT = "oct"
     case EC = "EC"
@@ -48,7 +48,7 @@ public enum JWKKeyType: String, Codable {
 
 /// A JWK object that represents a key or a key pair of a certain type.
 /// Check `KeyType` for the supported key types.
-public protocol JWK: Codable {
+protocol JWK: Codable {
     /// The cryptographic algorithm family used with the JWK.
     var keyType: JWKKeyType { get }
 
