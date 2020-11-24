@@ -9,7 +9,7 @@ import CryptoKit
 import Foundation
 
 @available(iOS 13.0, *)
-struct SecureEnclaveVerifier: VerifierProtocol {
+internal struct SecureEnclaveVerifier: VerifierProtocol {
     var algorithm: SignatureAlgorithm
     let publicKey: P256.Signing.PublicKey
     

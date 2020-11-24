@@ -9,7 +9,7 @@ import CryptoKit
 import Foundation
 
 @available(iOS 13.0, *)
-struct SecureEnclaveSigner: SignerProtocol {
+internal struct SecureEnclaveSigner: SignerProtocol {
     let algorithm: SignatureAlgorithm
     let privateKey: SecureEnclave.P256.Signing.PrivateKey
 
