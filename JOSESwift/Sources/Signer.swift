@@ -58,7 +58,10 @@ struct Signer<KeyType> {
                 self.signer = ECSigner(algorithm: signingAlgorithm, privateKey: privateKey as! ECSigner.KeyType)
             } else if #available(iOS 13.0, *),
                       type(of: privateKey) is SecureEnclave.P256.Signing.PrivateKey.Type {
-                self.signer = SecureEnclaveSigner(algorithm: signingAlgorithm, privateKey: privateKey as! SecureEnclave.P256.Signing.PrivateKey)
+                self.signer = SecureEnclaveSigner(
+                    algorithm: signingAlgorithm,
+                    privateKey: privateKey as! SecureEnclave.P256.Signing.PrivateKey
+                )
             } else {
                 return nil
             }
