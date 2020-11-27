@@ -22,6 +22,7 @@
 //  ---------------------------------------------------------------------------
 //
 
+import CryptoKit
 import Foundation
 
 protocol VerifierProtocol {
@@ -55,10 +56,17 @@ struct Verifier {
             // swiftlint:disable:next force_cast
             self.verifier = RSAVerifier(algorithm: verifyingAlgorithm, publicKey: publicKey as! RSAVerifier.KeyType)
         case .ES256, .ES384, .ES512:
-            guard type(of: publicKey) is ECVerifier.KeyType.Type else {
+            if type(of: publicKey) is ECVerifier.KeyType.Type {
+                self.verifier = ECVerifier(algorithm: verifyingAlgorithm, publicKey: publicKey as! ECVerifier.KeyType)
+            } else if #available(iOS 13.0, *),
+                      type(of: publicKey) is P256.Signing.PublicKey.Type {
+                self.verifier = SecureEnclaveVerifier(
+                    algorithm: verifyingAlgorithm,
+                    publicKey: publicKey as! P256.Signing.PublicKey
+                )
+            } else {
                 return nil
             }
-            self.verifier = ECVerifier(algorithm: verifyingAlgorithm, publicKey: publicKey as! ECVerifier.KeyType)
         }
     }
 
