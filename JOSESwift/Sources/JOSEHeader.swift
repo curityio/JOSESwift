@@ -42,7 +42,7 @@ protocol JOSEHeader: DataConvertible, CommonHeaderParameterSpace {
 
 // `DataConvertible` implementation.
 extension JOSEHeader {
-    public init?(_ data: Data) {
+    init?(_ data: Data) {
         // Verify that the header is a completely valid JSON object.
         guard
             let json = try? JSONSerialization.jsonObject(with: data, options: []),
@@ -54,7 +54,7 @@ extension JOSEHeader {
         try? self.init(parameters: parameters, headerData: data)
     }
 
-    public func data() -> Data {
+    func data() -> Data {
         return headerData
     }
 }

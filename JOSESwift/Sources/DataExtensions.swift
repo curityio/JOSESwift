@@ -28,7 +28,7 @@ extension Data {
     ///
     /// - Parameter base64URLString: The base64url encoded string to parse.
     /// - Returns: `nil` if the input is not recognized as valid base64url.
-    public init?(base64URLEncoded base64URLString: String) {
+    init?(base64URLEncoded base64URLString: String) {
         var s = base64URLString
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
@@ -48,7 +48,7 @@ extension Data {
     ///
     /// - Parameter base64URLData: The base64url, UTF-8 encoded data.
     /// - Returns: `nil` if the input is not recognized as valid base64url.
-    public init?(base64URLEncoded base64URLData: Data) {
+    init?(base64URLEncoded base64URLData: Data) {
         guard let s = String(data: base64URLData, encoding: .utf8) else {
             return nil
         }
@@ -59,7 +59,7 @@ extension Data {
     /// Returns a base64url encoded string.
     ///
     /// - Returns: The base64url encoded string.
-    public func base64URLEncodedString() -> String {
+    func base64URLEncodedString() -> String {
         let s = self.base64EncodedString()
         return s
             .replacingOccurrences(of: "=", with: "")
@@ -70,7 +70,7 @@ extension Data {
     /// Returns base64url encoded data.
     ///
     /// - Returns: The base64url encoded data.
-    public func base64URLEncodedData() -> Data {
+    func base64URLEncodedData() -> Data {
         // UTF-8 can represent [all Unicode characters](https://en.wikipedia.org/wiki/UTF-8), so this 
         // forced unwrap is safe. See also [this](https://stackoverflow.com/a/46152738/5233456) SO answer.
         // swiftlint:disable:next force_unwrapping
@@ -112,11 +112,11 @@ extension Data {
 }
 
 extension Data: DataConvertible {
-    public init(_ data: Data) {
+    init(_ data: Data) {
         self = data
     }
 
-    public func data() -> Data {
+    func data() -> Data {
         return self
     }
 }

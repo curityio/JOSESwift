@@ -81,7 +81,7 @@ struct JWSHeader: JOSEHeader {
 // Header parameters that are specific to a JWS Header.
 extension JWSHeader {
     /// The algorithm used to sign the payload.
-    public var algorithm: SignatureAlgorithm? {
+    var algorithm: SignatureAlgorithm? {
         // Forced cast is ok here since we checked both that "alg" exists
         // and holds a `String` value in `init(parameters:)`
         // swiftlint:disable:next force_cast
@@ -92,7 +92,7 @@ extension JWSHeader {
 extension JWSHeader: CommonHeaderParameterSpace {
     /// The JWK Set URL which refers to a resource for a set of JSON-encoded public keys,
     /// one of which corresponds to the key used to sign the JWS.
-    public var jku: URL? {
+    var jku: URL? {
         set {
             parameters["jku"] = newValue?.absoluteString
         }
@@ -105,7 +105,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The JSON Web key corresponding to the key used to digitally sign the JWS, as a String.
-    public var jwk: String? {
+    var jwk: String? {
         set {
             parameters["jwk"] = newValue
         }
@@ -115,7 +115,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The JSON Web key corresponding to the key used to digitally sign the JWS, as a JWK.
-    public var jwkTyped: JWK? {
+    var jwkTyped: JWK? {
         set {
             parameters["jwk"] = newValue?.parameters
         }
@@ -147,7 +147,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The Key ID indicates the key which was used to secure the JWS.
-    public var kid: String? {
+    var kid: String? {
         set {
             parameters["kid"] = newValue
         }
@@ -158,7 +158,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
 
     /// The X.509 URL that referes to a resource for the X.509 public key certificate
     /// or certificate chain corresponding to the key used to sign the JWS.
-    public var x5u: URL? {
+    var x5u: URL? {
         set {
             parameters["x5u"] = newValue?.absoluteString
         }
@@ -172,7 +172,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
 
     /// The X.509 certificate chain contains the X.509 public key certificate or
     /// certificate chain corresponding to the key used to sign the JWS.
-    public var x5c: [String]? {
+    var x5c: [String]? {
         set {
             parameters["x5c"] = newValue
         }
@@ -183,7 +183,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
 
     /// The X.509 certificate SHA-1 thumbprint of the DER encoding of the X.509 certificate
     /// corresponding to the key used to sign the JWS.
-    public var x5t: String? {
+    var x5t: String? {
         set {
             parameters["x5t"] = newValue
         }
@@ -194,7 +194,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
 
     /// The X.509 certificate SHA-256 thumbprint of the DER encoding of the X.509 certificate
     /// corresponding to the key used to sign the JWS.
-    public var x5tS256: String? {
+    var x5tS256: String? {
         set {
             parameters["x5tS256"] = newValue
         }
@@ -204,7 +204,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The type to declare the media type of the JWS object.
-    public var typ: String? {
+    var typ: String? {
         set {
             parameters["typ"] = newValue
         }
@@ -214,7 +214,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The content type to declare the media type of the secured content (payload).
-    public var cty: String? {
+    var cty: String? {
         set {
             parameters["cty"] = newValue
         }
@@ -224,7 +224,7 @@ extension JWSHeader: CommonHeaderParameterSpace {
     }
 
     /// The critical header parameter indicates the header parameter extensions.
-    public var crit: [String]? {
+    var crit: [String]? {
         set {
             parameters["crit"] = newValue
         }

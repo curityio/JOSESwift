@@ -132,7 +132,7 @@ extension JWEHeader {
 extension JWEHeader: CommonHeaderParameterSpace {
     /// The JWK Set URL which refers to a resource for a set of JSON-encoded public keys,
     /// one of which corresponds to the key used to encrypt the JWE.
-    public var jku: URL? {
+    var jku: URL? {
         set {
             parameters["jku"] = newValue?.absoluteString
         }
@@ -145,7 +145,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
     }
 
     /// The JSON Web key corresponding to the key used to encrypt the JWE, as a String.
-    public var jwk: String? {
+    var jwk: String? {
         set {
             parameters["jwk"] = newValue
         }
@@ -155,7 +155,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
     }
 
     /// The JSON Web key corresponding to the key used to encrypt the JWE, as a JWK.
-    public var jwkTyped: JWK? {
+    var jwkTyped: JWK? {
         set {
             parameters["jwk"] = newValue?.parameters
         }
@@ -187,7 +187,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
     }
 
     /// The Key ID indicates the key which was used to encrypt the JWE.
-    public var kid: String? {
+    var kid: String? {
         set {
             parameters["kid"] = newValue
         }
@@ -198,7 +198,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
 
     /// The X.509 URL that referes to a resource for the X.509 public key certificate
     /// or certificate chain corresponding to the key used to encrypt the JWE.
-    public var x5u: URL? {
+    var x5u: URL? {
         set {
             parameters["x5u"] = newValue?.absoluteString
         }
@@ -212,7 +212,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
 
     /// The X.509 certificate chain contains the X.509 public key certificate or
     /// certificate chain corresponding to the key used to encrypt the JWE.
-    public var x5c: [String]? {
+    var x5c: [String]? {
         set {
             parameters["x5c"] = newValue
         }
@@ -223,7 +223,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
 
     /// The X.509 certificate SHA-1 thumbprint of the DER encoding of the X.509 certificate
     /// corresponding to the key used to encrypt the JWE.
-    public var x5t: String? {
+    var x5t: String? {
         set {
             parameters["x5t"] = newValue
         }
@@ -234,7 +234,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
 
     /// The X.509 certificate SHA-256 thumbprint of the DER encoding of the X.509 certificate
     /// corresponding to the key used to encrypt the JWE.
-    public var x5tS256: String? {
+    var x5tS256: String? {
         set {
             parameters["x5tS256"] = newValue
         }
@@ -244,7 +244,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
     }
 
     /// The type to declare the media type of the JWE object.
-    public var typ: String? {
+    var typ: String? {
         set {
             parameters["typ"] = newValue
         }
@@ -254,7 +254,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
     }
 
     /// The content type to declare the media type of the secured content (payload).
-    public var cty: String? {
+    var cty: String? {
         set {
             parameters["cty"] = newValue
         }
@@ -264,7 +264,7 @@ extension JWEHeader: CommonHeaderParameterSpace {
     }
 
     /// The critical header parameter indicates the header parameter extensions.
-    public var crit: [String]? {
+    var crit: [String]? {
         set {
             parameters["crit"] = newValue
         }

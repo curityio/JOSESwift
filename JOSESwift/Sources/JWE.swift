@@ -210,7 +210,7 @@ struct JWE {
 
 /// Serialize the JWE to a given compact serializer.
 extension JWE: CompactSerializable {
-    public func serialize(to serializer: inout CompactSerializer) {
+    func serialize(to serializer: inout CompactSerializer) {
         serializer.serialize(header)
         serializer.serialize(encryptedKey)
         serializer.serialize(initializationVector)
@@ -221,11 +221,11 @@ extension JWE: CompactSerializable {
 
 /// Deserialize the JWE from a given compact deserializer.
 extension JWE: CompactDeserializable {
-    public static var componentCount: Int {
+    static var componentCount: Int {
         return 5
     }
 
-    public init (from deserializer: CompactDeserializer) throws {
+    init (from deserializer: CompactDeserializer) throws {
         let header = try deserializer.deserialize(JWEHeader.self, at: ComponentCompactSerializedIndex.jweHeaderIndex)
         let encryptedKey = try deserializer.deserialize(Data.self, at: ComponentCompactSerializedIndex.jweEncryptedKeyIndex)
         let initializationVector = try deserializer.deserialize(Data.self, at: ComponentCompactSerializedIndex.jweInitializationVectorIndex)

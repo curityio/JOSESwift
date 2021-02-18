@@ -24,7 +24,7 @@
 import Foundation
 
 extension SymmetricKey: Encodable {
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var commonParameters = encoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -45,7 +45,7 @@ extension SymmetricKey: Encodable {
 }
 
 extension SymmetricKey: Decodable {
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let commonParameters = try decoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
