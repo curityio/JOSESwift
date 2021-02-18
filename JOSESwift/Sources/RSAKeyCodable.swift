@@ -24,7 +24,7 @@
 import Foundation
 
 extension RSAPublicKey: Encodable {
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var commonParameters = encoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -46,7 +46,7 @@ extension RSAPublicKey: Encodable {
 }
 
 extension RSAPublicKey: Decodable {
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let commonParameters = try decoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -80,7 +80,7 @@ extension RSAPublicKey: Decodable {
 }
 
 extension RSAPrivateKey: Encodable {
-    public func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var commonParameters = encoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -103,7 +103,7 @@ extension RSAPrivateKey: Encodable {
 }
 
 extension RSAPrivateKey: Decodable {
-    public init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let commonParameters = try decoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.

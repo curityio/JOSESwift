@@ -205,7 +205,7 @@ struct JWS {
 }
 
 extension JWS: CompactSerializable {
-    public func serialize(to serializer: inout CompactSerializer) {
+    func serialize(to serializer: inout CompactSerializer) {
         serializer.serialize(header)
         serializer.serialize(payload)
         serializer.serialize(signature)
@@ -213,11 +213,11 @@ extension JWS: CompactSerializable {
 }
 
 extension JWS: CompactDeserializable {
-    public static var componentCount: Int {
+    static var componentCount: Int {
         return 3
     }
 
-    public init(from deserializer: CompactDeserializer) throws {
+    init(from deserializer: CompactDeserializer) throws {
         let header = try deserializer.deserialize(JWSHeader.self, at: ComponentCompactSerializedIndex.jwsHeaderIndex)
         let payload = try deserializer.deserialize(Payload.self, at: ComponentCompactSerializedIndex.jwsPayloadIndex)
         let signature = try deserializer.deserialize(Data.self, at: ComponentCompactSerializedIndex.jwsSignatureIndex)

@@ -109,7 +109,7 @@ protocol JWK: Codable {
 
 extension JWK {
     @available(iOS 11.0, *)
-    public func thumbprint(algorithm: JWKThumbprintAlgorithm = .SHA256) throws -> String {
+    func thumbprint(algorithm: JWKThumbprintAlgorithm = .SHA256) throws -> String {
         guard let json = try? JSONSerialization.data(withJSONObject: requiredParameters, options: .sortedKeys) else {
             throw JOSESwiftError.thumbprintSerialization
         }

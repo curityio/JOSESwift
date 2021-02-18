@@ -66,37 +66,37 @@ struct JWKSet {
 }
 
 extension JWKSet: Collection {
-    public typealias ArrayType = [JWK]
+    typealias ArrayType = [JWK]
 
-    public typealias Element = ArrayType.Element
-    public typealias Index = ArrayType.Index
-    public typealias Iterator = ArrayType.Iterator
+    typealias Element = ArrayType.Element
+    typealias Index = ArrayType.Index
+    typealias Iterator = ArrayType.Iterator
 
-    public var startIndex: Index {
+    var startIndex: Index {
         return self.keys.startIndex
     }
 
-    public var endIndex: Index {
+    var endIndex: Index {
         return self.keys.endIndex
     }
 
-    public subscript(index: Index) -> Element {
+    subscript(index: Index) -> Element {
         return keys[index]
     }
 
-    public func index(after index: Index) -> Index {
+    func index(after index: Index) -> Index {
         return self.keys.index(after: index)
     }
 
-    public func makeIterator() -> IndexingIterator<ArrayType> {
+    func makeIterator() -> IndexingIterator<ArrayType> {
         return self.keys.makeIterator()
     }
 }
 
 extension JWKSet: ExpressibleByArrayLiteral {
-    public typealias ArrayLiteralElement = Element
+    typealias ArrayLiteralElement = Element
 
-    public init(arrayLiteral elements: ArrayLiteralElement...) {
+    init(arrayLiteral elements: ArrayLiteralElement...) {
         var keys: [Element] = []
         for element in elements {
             keys.append(element)
