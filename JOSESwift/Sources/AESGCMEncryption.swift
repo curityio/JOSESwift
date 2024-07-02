@@ -23,6 +23,7 @@
 
 import Foundation
 
+@available(iOS 13.0, *)
 struct AESGCMEncryption {
     private let contentEncryptionAlgorithm: ContentEncryptionAlgorithm
     private let contentEncryptionKey: Data
@@ -53,6 +54,7 @@ struct AESGCMEncryption {
     }
 }
 
+@available(iOS 13.0, *)
 extension AESGCMEncryption: ContentEncrypter {
     func encrypt(header: JWEHeader, payload: Payload) throws -> ContentEncryptionContext {
         let plaintext = payload.data()
@@ -61,6 +63,7 @@ extension AESGCMEncryption: ContentEncrypter {
     }
 }
 
+@available(iOS 13.0, *)
 extension AESGCMEncryption: ContentDecrypter {
     func decrypt(decryptionContext: ContentDecryptionContext) throws -> Data {
         return try decrypt(

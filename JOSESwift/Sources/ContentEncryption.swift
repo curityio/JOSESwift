@@ -50,7 +50,11 @@ extension ContentEncryptionAlgorithm {
         case .A128CBCHS256, .A256CBCHS512:
             return try AESCBCEncryption(contentEncryptionAlgorithm: self, secretKey: contentEncryptionKey)
         case .A128GCM, .A256GCM:
-            return AESGCMEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            if #available(iOS 13.0, *) {
+                return AESGCMEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            } else {
+                throw AESError.encryptingFailed(description: "A128GCM and A256GCM are not supported below iOS 13")
+            }
         }
     }
 
@@ -59,7 +63,11 @@ extension ContentEncryptionAlgorithm {
         case .A128CBCHS256, .A256CBCHS512:
             return try AESCBCEncryption(contentEncryptionAlgorithm: self, secretKey: contentEncryptionKey)
         case .A128GCM, .A256GCM:
-            return AESGCMEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            if #available(iOS 13.0, *) {
+                return AESGCMEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            } else {
+                throw AESError.decryptingFailed(description: "A128GCM and A256GCM are not supported below iOS 13")
+            }
         }
     }
 }
