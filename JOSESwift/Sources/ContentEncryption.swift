@@ -45,17 +45,29 @@ protocol ContentDecrypter {
 }
 
 extension ContentEncryptionAlgorithm {
-    func makeContentEncrypter(contentEncryptionKey: Data) -> ContentEncrypter {
+    func makeContentEncrypter(contentEncryptionKey: Data) throws -> ContentEncrypter {
         switch self {
         case .A128CBCHS256, .A256CBCHS512:
-            return AESCBCEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            return try AESCBCEncryption(contentEncryptionAlgorithm: self, secretKey: contentEncryptionKey)
+        case .A128GCM, .A256GCM:
+            if #available(iOS 13.0, *) {
+                return AESGCMEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            } else {
+                throw AESError.encryptingFailed(description: "A128GCM and A256GCM are not supported below iOS 13")
+            }
         }
     }
 
-    func makeContentDecrypter(contentEncryptionKey: Data) -> ContentDecrypter {
+    func makeContentDecrypter(contentEncryptionKey: Data) throws -> ContentDecrypter {
         switch self {
         case .A128CBCHS256, .A256CBCHS512:
-            return AESCBCEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            return try AESCBCEncryption(contentEncryptionAlgorithm: self, secretKey: contentEncryptionKey)
+        case .A128GCM, .A256GCM:
+            if #available(iOS 13.0, *) {
+                return AESGCMEncryption(contentEncryptionAlgorithm: self, contentEncryptionKey: contentEncryptionKey)
+            } else {
+                throw AESError.decryptingFailed(description: "A128GCM and A256GCM are not supported below iOS 13")
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ extension JWK {
 
 extension JWK {
     func jsonString() -> String? {
-        guard let json = try? JSONEncoder().encode(self) else {
+        guard let json = jsonData() else {
             return nil
         }
 
@@ -43,6 +43,8 @@ extension JWK {
     }
 
     func jsonData() -> Data? {
-        return try? JSONEncoder().encode(self)
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .sortedKeys
+        return try? encoder.encode(self)
     }
 }

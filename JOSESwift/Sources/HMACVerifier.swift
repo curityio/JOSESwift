@@ -1,11 +1,11 @@
 //
-//  JOSESwift.h
+//  HMACVerifier.swift
 //  JOSESwift
 //
-//  Created by Daniel Egger on 17/08/2017.
+//  Created by Tobias Hagemann on 14.04.21.
 //
 //  ---------------------------------------------------------------------------
-//  Copyright 2018 Airside Mobile Inc.
+//  Copyright 2021 Airside Mobile Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -21,12 +21,20 @@
 //  ---------------------------------------------------------------------------
 //
 
-#import <Foundation/Foundation.h>
+import Foundation
 
-//! Project version number for JOSESwift.
-FOUNDATION_EXPORT double JOSESwiftVersionNumber;
+/// A `Verifier` to verify a signature created with an `HMAC` algorithm.
+internal struct HMACVerifier: VerifierProtocol {
+    typealias KeyType = HMAC.KeyType
 
-//! Project version string for JOSESwift.
-FOUNDATION_EXPORT const unsigned char JOSESwiftVersionString[];
+    let algorithm: SignatureAlgorithm
+    let key: KeyType
 
-// In this header, you should import all the public headers of your framework using statements like #import <JOSESwift/PublicHeader.h>
+    func verify(_ signingInput: Data, against signature: Data) throws -> Bool {
+        guard let hmacAlgorithm = algorithm.hmacAlgorithm else {
+            throw HMACError.algorithmNotSupported
+        }
+        let hmacOutput = try HMAC.calculate(from: signingInput, with: key, using: hmacAlgorithm)
+        return hmacOutput.timingSafeCompare(with: signature)
+    }
+}

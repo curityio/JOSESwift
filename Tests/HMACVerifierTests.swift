@@ -1,11 +1,11 @@
 //
-//  JOSESwift.h
-//  JOSESwift
+//  HMACVerifierTests.swift
+//  Tests
 //
-//  Created by Daniel Egger on 17/08/2017.
+//  Created by Tobias Hagemann on 14.04.21.
 //
 //  ---------------------------------------------------------------------------
-//  Copyright 2018 Airside Mobile Inc.
+//  Copyright 2021 Airside Mobile Inc.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -21,12 +21,18 @@
 //  ---------------------------------------------------------------------------
 //
 
-#import <Foundation/Foundation.h>
+import XCTest
+@testable import JOSESwift
 
-//! Project version number for JOSESwift.
-FOUNDATION_EXPORT double JOSESwiftVersionNumber;
+class HMACVerifierTests: HMACCryptoTestCase {
+    private func _testVerifying(algorithm: SignatureAlgorithm, expectedSignature: Data) {
+        let verifier = HMACVerifier(algorithm: algorithm, key: testKey)
+        XCTAssertTrue(try! verifier.verify(testData, against: expectedSignature))
+    }
 
-//! Project version string for JOSESwift.
-FOUNDATION_EXPORT const unsigned char JOSESwiftVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <JOSESwift/PublicHeader.h>
+    func testVerifying() {
+        _testVerifying(algorithm: .HS256, expectedSignature: hmac256TestOutput)
+        _testVerifying(algorithm: .HS384, expectedSignature: hmac384TestOutput)
+        _testVerifying(algorithm: .HS512, expectedSignature: hmac512TestOutput)
+    }
+}

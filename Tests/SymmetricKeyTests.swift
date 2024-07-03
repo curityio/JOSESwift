@@ -44,7 +44,7 @@ class SymmetricKeyTests: XCTestCase {
         XCTAssertEqual(jwk["alg"], "A256CBC-HS512")
 
         XCTAssertEqual(
-            "{\"kty\":\"oct\",\"alg\":\"A256CBC-HS512\",\"k\":\"GawgguFyGrWKav7AX4VKUg\"}",
+            "{\"alg\":\"A256CBC-HS512\",\"k\":\"GawgguFyGrWKav7AX4VKUg\",\"kty\":\"oct\"}",
             jwk.jsonString()!
         )
     }
@@ -66,7 +66,7 @@ class SymmetricKeyTests: XCTestCase {
         XCTAssertEqual(jwk["alg"], "A256CBC-HS512")
 
         XCTAssertEqual(
-            "{\"kty\":\"oct\",\"alg\":\"A256CBC-HS512\",\"k\":\"GawgguFyGrWKav7AX4VKUg\"}",
+            "{\"alg\":\"A256CBC-HS512\",\"k\":\"GawgguFyGrWKav7AX4VKUg\",\"kty\":\"oct\"}",
             jwk.jsonString()!
         )
     }
@@ -88,7 +88,7 @@ class SymmetricKeyTests: XCTestCase {
         XCTAssertEqual(jwk["alg"], "A256CBC-HS512")
 
         XCTAssertEqual(
-            "{\"kty\":\"oct\",\"alg\":\"A256CBC-HS512\",\"k\":\"GawgguFyGrWKav7AX4VKUg\"}",
+            "{\"alg\":\"A256CBC-HS512\",\"k\":\"GawgguFyGrWKav7AX4VKUg\",\"kty\":\"oct\"}",
             jwk.jsonString()!
         )
     }
@@ -166,3 +166,4 @@ class SymmetricKeyTests: XCTestCase {
         XCTAssertEqual(jwk.parameters[JWKParameter.algorithm.rawValue], ContentEncryptionAlgorithm.A256CBCHS512.rawValue)
     }
 }
+// swiftlint:enable force_unwrapping

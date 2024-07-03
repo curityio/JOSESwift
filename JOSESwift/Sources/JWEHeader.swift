@@ -29,13 +29,17 @@ struct JWEHeader: JOSEHeader {
     var parameters: [String: Any] {
         didSet {
             guard JSONSerialization.isValidJSONObject(parameters) else {
+                assertionFailure("header parameters are invalid json...")
                 return
             }
             // Forcing the try is ok here, because it is valid JSON.
             // swiftlint:disable:next force_try
-            headerData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+            headerData = try! JSONSerialization.data(withJSONObject: parameters, options: [.sortedKeys])
         }
     }
+
+    // See https://www.rfc-editor.org/rfc/rfc7516#section-4.1
+    var requiredParameters = ["alg", "enc"]
 
     /// Initializes a JWE header with given parameters and their original `Data` representation.
     /// Note that this (base64-url decoded) `Data` representation has to be exactly as it was
@@ -73,19 +77,18 @@ struct JWEHeader: JOSEHeader {
             "enc": contentEncryptionAlgorithm.rawValue
         ]
 
-        // Forcing the try is ok here, since [String: String] can be converted to JSON.
+        // Forcing the try is ok here, since [String: String] can be converted to JSON and "alg" and "enc" are the only required
+        // header parameters, which should pass the guard conditions in the main initializer
         // swiftlint:disable:next force_try
-        let headerData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-
-        // Forcing the try is ok here, since "alg" and "enc" are the only required header parameters.
-        // swiftlint:disable:next force_try
-        try! self.init(parameters: parameters, headerData: headerData)
+        try! self.init(parameters: parameters)
     }
 
     /// Initializes a `JWEHeader` with the specified parameters.
     public init(parameters: [String: Any]) throws {
-        let headerData = try JSONSerialization.data(withJSONObject: parameters, options: [])
-        try self.init(parameters: parameters, headerData: headerData)
+        try self.init(
+            parameters: parameters,
+            headerData: try JSONSerialization.data(withJSONObject: parameters, options: [.sortedKeys])
+        )
     }
 }
 
@@ -117,14 +120,14 @@ extension JWEHeader {
 
     /// The zip header parameter indicates that the content has been compressed before encryption. If no compression is applied, the `zip` parameter is `nil`.
     var zip: String? {
-        set {
-            parameters["zip"] = newValue
-        }
         get {
             guard let compressionAlgorithm = parameters["zip"] as? String else {
                 return nil
             }
             return compressionAlgorithm
+        }
+        set {
+            parameters["zip"] = newValue
         }
     }
 }
@@ -133,32 +136,29 @@ extension JWEHeader: CommonHeaderParameterSpace {
     /// The JWK Set URL which refers to a resource for a set of JSON-encoded public keys,
     /// one of which corresponds to the key used to encrypt the JWE.
     var jku: URL? {
-        set {
-            parameters["jku"] = newValue?.absoluteString
-        }
         get {
             guard let parameter = parameters["jku"] as? String else {
                 return nil
             }
             return URL(string: parameter)
         }
+        set {
+            parameters["jku"] = newValue?.absoluteString
+        }
     }
 
     /// The JSON Web key corresponding to the key used to encrypt the JWE, as a String.
     var jwk: String? {
-        set {
-            parameters["jwk"] = newValue
-        }
         get {
             return parameters["jwk"] as? String
+        }
+        set {
+            parameters["jwk"] = newValue
         }
     }
 
     /// The JSON Web key corresponding to the key used to encrypt the JWE, as a JWK.
     var jwkTyped: JWK? {
-        set {
-            parameters["jwk"] = newValue?.parameters
-        }
         get {
             guard let jwkParameters = parameters["jwk"] as? [String: String] else {
                 return nil
@@ -184,92 +184,95 @@ extension JWEHeader: CommonHeaderParameterSpace {
                 return try? RSAPublicKey(data: json)
             }
         }
+        set {
+            parameters["jwk"] = newValue?.parameters
+        }
     }
 
     /// The Key ID indicates the key which was used to encrypt the JWE.
     var kid: String? {
-        set {
-            parameters["kid"] = newValue
-        }
         get {
             return parameters["kid"] as? String
+        }
+        set {
+            parameters["kid"] = newValue
         }
     }
 
     /// The X.509 URL that referes to a resource for the X.509 public key certificate
     /// or certificate chain corresponding to the key used to encrypt the JWE.
     var x5u: URL? {
-        set {
-            parameters["x5u"] = newValue?.absoluteString
-        }
         get {
             guard let parameter = parameters["x5u"] as? String else {
                 return nil
             }
             return URL(string: parameter)
         }
+        set {
+            parameters["x5u"] = newValue?.absoluteString
+        }
     }
 
     /// The X.509 certificate chain contains the X.509 public key certificate or
     /// certificate chain corresponding to the key used to encrypt the JWE.
     var x5c: [String]? {
-        set {
-            parameters["x5c"] = newValue
-        }
         get {
             return parameters["x5c"] as? [String]
+        }
+        set {
+            parameters["x5c"] = newValue
         }
     }
 
     /// The X.509 certificate SHA-1 thumbprint of the DER encoding of the X.509 certificate
     /// corresponding to the key used to encrypt the JWE.
     var x5t: String? {
-        set {
-            parameters["x5t"] = newValue
-        }
         get {
             return parameters["x5t"] as? String
+        }
+        set {
+            parameters["x5t"] = newValue
         }
     }
 
     /// The X.509 certificate SHA-256 thumbprint of the DER encoding of the X.509 certificate
     /// corresponding to the key used to encrypt the JWE.
     var x5tS256: String? {
-        set {
-            parameters["x5tS256"] = newValue
-        }
         get {
             return parameters["x5tS256"] as? String
+        }
+        set {
+            parameters["x5tS256"] = newValue
         }
     }
 
     /// The type to declare the media type of the JWE object.
     var typ: String? {
-        set {
-            parameters["typ"] = newValue
-        }
         get {
             return parameters["typ"] as? String
+        }
+        set {
+            parameters["typ"] = newValue
         }
     }
 
     /// The content type to declare the media type of the secured content (payload).
     var cty: String? {
-        set {
-            parameters["cty"] = newValue
-        }
         get {
             return parameters["cty"] as? String
+        }
+        set {
+            parameters["cty"] = newValue
         }
     }
 
     /// The critical header parameter indicates the header parameter extensions.
     var crit: [String]? {
-        set {
-            parameters["crit"] = newValue
-        }
         get {
             return parameters["crit"] as? [String]
+        }
+        set {
+            parameters["crit"] = newValue
         }
     }
 }

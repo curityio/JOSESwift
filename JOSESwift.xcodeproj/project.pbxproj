@@ -95,9 +95,18 @@
 		65F44EB11FE2D941000C5EA0 /* JWK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F44EB01FE2D941000C5EA0 /* JWK.swift */; };
 		65F44EB31FE2E1C6000C5EA0 /* RSAKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F44EB21FE2E1C6000C5EA0 /* RSAKeys.swift */; };
 		65FBFDE71F45CC7C005C7D68 /* JOSESwift.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FBFDE51F45CC7C005C7D68 /* JOSESwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7402BE932626FC4A0012801E /* HMACSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BE922626FC4A0012801E /* HMACSigner.swift */; };
+		7402BE972626FC610012801E /* HMACVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BE962626FC610012801E /* HMACVerifier.swift */; };
+		7402BEA726274D390012801E /* HMACSignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BEA626274D390012801E /* HMACSignerTests.swift */; };
+		7402BEAB26274D430012801E /* HMACVerifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BEAA26274D430012801E /* HMACVerifierTests.swift */; };
+		7402BEAF26274DA40012801E /* HMACCryptoTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BEAE26274DA40012801E /* HMACCryptoTestCase.swift */; };
+		7402BEB526288DCD0012801E /* JWSHMACTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7402BEB426288DCD0012801E /* JWSHMACTests.swift */; };
+		74618E4E28A64EBA0028B066 /* AESGCMEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74618E4D28A64EBA0028B066 /* AESGCMEncryption.swift */; };
+		74618E5028A6A3080028B066 /* AESGCMEncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74618E4F28A6A3080028B066 /* AESGCMEncryptionTests.swift */; };
 		8A30B8F822118FD0001834E3 /* DeflateWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A30B8F722118FD0001834E3 /* DeflateWrapper.swift */; };
 		8A30B8FA22118FE6001834E3 /* JWECompressionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A30B8F922118FE6001834E3 /* JWECompressionTests.swift */; };
 		8A4B08B22213FF0600828536 /* Compressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4B08B12213FF0600828536 /* Compressor.swift */; };
+		8A5B190C2BF260F100A250EB /* AESGCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B190B2BF260F100A250EB /* AESGCM.swift */; };
 		9665A24722B0F3E100EAC14A /* ECAsn1IntegerConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9665A24622B0F3E100EAC14A /* ECAsn1IntegerConversionTests.swift */; };
 		C803EFE51FA77E3000B71335 /* JWSRSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803EFE41FA77E3000B71335 /* JWSRSATests.swift */; };
 		C803EFE91FA7893A00B71335 /* JWSHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C803EFE81FA7893A00B71335 /* JWSHeaderTests.swift */; };
@@ -226,9 +235,18 @@
 		65FBFDE21F45CC7C005C7D68 /* JOSESwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JOSESwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65FBFDE51F45CC7C005C7D68 /* JOSESwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JOSESwift.h; sourceTree = "<group>"; };
 		65FBFDE61F45CC7C005C7D68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7402BE922626FC4A0012801E /* HMACSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACSigner.swift; sourceTree = "<group>"; };
+		7402BE962626FC610012801E /* HMACVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACVerifier.swift; sourceTree = "<group>"; };
+		7402BEA626274D390012801E /* HMACSignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACSignerTests.swift; sourceTree = "<group>"; };
+		7402BEAA26274D430012801E /* HMACVerifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACVerifierTests.swift; sourceTree = "<group>"; };
+		7402BEAE26274DA40012801E /* HMACCryptoTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACCryptoTestCase.swift; sourceTree = "<group>"; };
+		7402BEB426288DCD0012801E /* JWSHMACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWSHMACTests.swift; sourceTree = "<group>"; };
+		74618E4D28A64EBA0028B066 /* AESGCMEncryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESGCMEncryption.swift; sourceTree = "<group>"; };
+		74618E4F28A6A3080028B066 /* AESGCMEncryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESGCMEncryptionTests.swift; sourceTree = "<group>"; };
 		8A30B8F722118FD0001834E3 /* DeflateWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeflateWrapper.swift; sourceTree = "<group>"; };
 		8A30B8F922118FE6001834E3 /* JWECompressionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWECompressionTests.swift; sourceTree = "<group>"; };
 		8A4B08B12213FF0600828536 /* Compressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compressor.swift; sourceTree = "<group>"; };
+		8A5B190B2BF260F100A250EB /* AESGCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AESGCM.swift; sourceTree = "<group>"; };
 		9665A24622B0F3E100EAC14A /* ECAsn1IntegerConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECAsn1IntegerConversionTests.swift; sourceTree = "<group>"; };
 		C803EFE41FA77E3000B71335 /* JWSRSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWSRSATests.swift; sourceTree = "<group>"; };
 		C803EFE81FA7893A00B71335 /* JWSHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWSHeaderTests.swift; sourceTree = "<group>"; };
@@ -284,6 +302,7 @@
 				C803EFE41FA77E3000B71335 /* JWSRSATests.swift */,
 				65125A311FBF85FA007CF3AE /* JWSDeserializationTests.swift */,
 				5FB765151D1E18BD7BFB95B8 /* JWSECTests.swift */,
+				7402BEB426288DCD0012801E /* JWSHMACTests.swift */,
 			);
 			name = JWS;
 			sourceTree = "<group>";
@@ -303,6 +322,7 @@
 				C86AC8CA1FCEC20F0007E611 /* AESCBCContentEncryptionTests.swift */,
 				C83070041FD1B7390068C5CB /* AESCBCContentDecryptionTests.swift */,
 				65B5B93F23F5604A009C8396 /* DirectEncryptionKeyManagementModeTests.swift */,
+				74618E4F28A6A3080028B066 /* AESGCMEncryptionTests.swift */,
 			);
 			name = JWE;
 			sourceTree = "<group>";
@@ -310,8 +330,11 @@
 		65125A2F1FBF6BAC007CF3AE /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				C81DD9291FD7096B00026024 /* HMACTests.swift */,
 				C84BDE181FAB44BE0002B5D0 /* CryptoTestCase.swift */,
+				7402BEAE26274DA40012801E /* HMACCryptoTestCase.swift */,
+				C81DD9291FD7096B00026024 /* HMACTests.swift */,
+				7402BEA626274D390012801E /* HMACSignerTests.swift */,
+				7402BEAA26274D430012801E /* HMACVerifierTests.swift */,
 				C84BDE161FAB1CB60002B5D0 /* RSASignerTests.swift */,
 				C8EE14531FAC797500A616E4 /* RSAVerifierTests.swift */,
 				C8F0964F1FC56B25000BEE4D /* RSAEncryptionTests.swift */,
@@ -378,17 +401,10 @@
 			isa = PBXGroup;
 			children = (
 				6558164C23F45CC200EA5FEC /* ContentEncryption.swift */,
-				6558164E23F462BC00EA5FEC /* AESCBCEncryption */,
+				6558164F23F463C200EA5FEC /* AESCBCEncryption.swift */,
+				74618E4D28A64EBA0028B066 /* AESGCMEncryption.swift */,
 			);
 			name = ContentEncryption;
-			sourceTree = "<group>";
-		};
-		6558164E23F462BC00EA5FEC /* AESCBCEncryption */ = {
-			isa = PBXGroup;
-			children = (
-				6558164F23F463C200EA5FEC /* AESCBCEncryption.swift */,
-			);
-			name = AESCBCEncryption;
 			sourceTree = "<group>";
 		};
 		657D0F7523FAE4B5004A7975 /* KeyWrapping */ = {
@@ -506,6 +522,8 @@
 		65FABAE81F4ABF61006D7679 /* CryptoInterface */ = {
 			isa = PBXGroup;
 			children = (
+				7402BE922626FC4A0012801E /* HMACSigner.swift */,
+				7402BE962626FC610012801E /* HMACVerifier.swift */,
 				C85B1EF5204D82970026BDCB /* RSASigner.swift */,
 				65D8680E1F7CE35000769BBF /* RSAVerifier.swift */,
 				5FB76AF2833DDD77D56D6D3F /* ECSigner.swift */,
@@ -579,6 +597,7 @@
 				C85012E21FE04E0C00EC49FA /* SecureRandom.swift */,
 				C81DD9271FD7096100026024 /* HMAC.swift */,
 				C81DBD571FFE66E700ECF69E /* AES.swift */,
+				8A5B190B2BF260F100A250EB /* AESGCM.swift */,
 				C8610F0A2029D21800859FCC /* RSA.swift */,
 				5FB760DB390F90F91102DB74 /* EC.swift */,
 				5FB76CEA2BD69C2AF38D2AFC /* SecKeyECPublicKey.swift */,
@@ -719,7 +738,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or run `brew bundle`\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint or run 'brew bundle'\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -747,14 +766,18 @@
 				6575696D203EF9CE004A0EFD /* JWSValidationTests.swift in Sources */,
 				65F2559023FBE75300A3FC44 /* AESKeyWrapTests.swift in Sources */,
 				65A103A1202B03BB00D22BF5 /* ASN1DERParsingTests.swift in Sources */,
+				7402BEAF26274DA40012801E /* HMACCryptoTestCase.swift in Sources */,
 				C803EFEF1FA884C100B71335 /* JWEHeaderTests.swift in Sources */,
+				7402BEA726274D390012801E /* HMACSignerTests.swift in Sources */,
 				C81DD92A1FD7096B00026024 /* HMACTests.swift in Sources */,
+				7402BEAB26274D430012801E /* HMACVerifierTests.swift in Sources */,
 				65684A4F2031971A00E56C68 /* RSAPublicKeyToSecKeyTests.swift in Sources */,
 				65E733D51FEC031B0009EAC6 /* JWKRSAKeysTests.swift in Sources */,
 				65E733D31FEBFDB30009EAC6 /* JWKtoJSONTests.swift in Sources */,
 				65B5B93E23F55978009C8396 /* RSAKeyManagementModeTests.swift in Sources */,
 				C803EFE51FA77E3000B71335 /* JWSRSATests.swift in Sources */,
 				C84BDE191FAB44BE0002B5D0 /* CryptoTestCase.swift in Sources */,
+				7402BEB526288DCD0012801E /* JWSHMACTests.swift in Sources */,
 				6514ADCB2031DD27008A4DD3 /* ASN1DEREncodingTests.swift in Sources */,
 				C803EFED1FA8849C00B71335 /* JWERSATests.swift in Sources */,
 				C8F096501FC56B25000BEE4D /* RSAEncryptionTests.swift in Sources */,
@@ -778,6 +801,7 @@
 				5FB76093CE81BF1F8E7C254A /* JWKECDecodingTests.swift in Sources */,
 				5FB765B20A256B93440E79E2 /* JWKECEncodingTests.swift in Sources */,
 				5FB7656EDD94AE3620A8C13C /* SecKeyECPrivateKeyTests.swift in Sources */,
+				74618E5028A6A3080028B066 /* AESGCMEncryptionTests.swift in Sources */,
 				65B5B94023F5604A009C8396 /* DirectEncryptionKeyManagementModeTests.swift in Sources */,
 				5FB7656FF300A4A3EF0F3597 /* DataECPrivateKeyTests.swift in Sources */,
 				5FB762ED79A6159B5A9EDECC /* ECPrivateKeyToSecKeyTests.swift in Sources */,
@@ -799,10 +823,12 @@
 				6572C2F21F96428800D4186D /* Decrypter.swift in Sources */,
 				653656092035D86E00A3AC3B /* JWKSet.swift in Sources */,
 				65D1D0671F7A878D006377CD /* Deserializer.swift in Sources */,
+				74618E4E28A64EBA0028B066 /* AESGCMEncryption.swift in Sources */,
 				65F44EB11FE2D941000C5EA0 /* JWK.swift in Sources */,
 				6582614F2029F2D100B594ED /* ASN1DERParsing.swift in Sources */,
 				C85012E31FE04E0C00EC49FA /* SecureRandom.swift in Sources */,
 				6514ADC92031DD15008A4DD3 /* ASN1DEREncoding.swift in Sources */,
+				7402BE932626FC4A0012801E /* HMACSigner.swift in Sources */,
 				C8610F0B2029D21800859FCC /* RSA.swift in Sources */,
 				65F44EB31FE2E1C6000C5EA0 /* RSAKeys.swift in Sources */,
 				652F6DE91F73E6780002DEE0 /* Serializer.swift in Sources */,
@@ -813,6 +839,7 @@
 				6571F6231F7BF786004D53C5 /* JWSHeader.swift in Sources */,
 				65D8680F1F7CE35000769BBF /* RSAVerifier.swift in Sources */,
 				6558164A23F456F700EA5FEC /* KeyManagementMode.swift in Sources */,
+				8A5B190C2BF260F100A250EB /* AESGCM.swift in Sources */,
 				65826AB22028696000AFFC46 /* RSAKeyCodable.swift in Sources */,
 				C8610F092029B15600859FCC /* Algorithms.swift in Sources */,
 				658EE1AF23F4067D00B6E967 /* AlgorithmExtensions.swift in Sources */,
@@ -824,6 +851,7 @@
 				8A30B8F822118FD0001834E3 /* DeflateWrapper.swift in Sources */,
 				612B0C94248E1C83009F1929 /* Thumbprint.swift in Sources */,
 				65D8E8EA20F4AF880059506A /* SymmetricKeyCodable.swift in Sources */,
+				7402BE972626FC610012801E /* HMACVerifier.swift in Sources */,
 				049B5F7925657B3800A00082 /* SecureEnclaveSigner.swift in Sources */,
 				C85B1EF6204D82970026BDCB /* RSASigner.swift in Sources */,
 				65344C3E20F4CC9000FCBBA1 /* DataSymmetricKey.swift in Sources */,
@@ -867,10 +895,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 4857DE3DAC;
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.airsidemobile.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 			};
 			name = Debug;
 		};
@@ -880,10 +914,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				DEVELOPMENT_TEAM = 4857DE3DAC;
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.airsidemobile.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 			};
 			name = Release;
 		};
@@ -940,16 +980,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -1000,15 +1044,19 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Release;
 		};
@@ -1025,12 +1073,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = JOSESwift/Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.airsidemobile.JOSESwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 			};
 			name = Debug;
 		};
@@ -1047,11 +1101,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = JOSESwift/Support/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.airsidemobile.JOSESwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx watchos watchsimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3,4,6,7";
 			};
 			name = Release;
 		};
