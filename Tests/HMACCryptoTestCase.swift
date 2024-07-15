@@ -23,6 +23,7 @@
 //
 
 import XCTest
+@testable import JOSESwift
 
 /// Test data provided in the [RFC-4231](https://tools.ietf.org/html/rfc4231).
 /// Compact serialization generated at [jwt.io](https://jwt.io)
