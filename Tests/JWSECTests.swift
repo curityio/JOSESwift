@@ -48,19 +48,19 @@ class JWSECTests: ECCryptoTestCase {
         }
     }
 
-    // FIXME: This test case cannot run on simulator
+#if !targetEnvironment(simulator)
     @available(iOS 13, *)
     func testSecureEnclaveSignAndSerialize() throws {
-        let algorithm = SignatureAlgorithm.PS256
+        let algorithm = SignatureAlgorithm.ES256
         let header = JWSHeader(algorithm: algorithm)
         let plainTextPayload = "foobar"
         let payload = Payload(plainTextPayload.data(using: .utf8)!)
         let privateKey = try SecureEnclave.P256.Signing.PrivateKey()
-        let signer = Signer(signingAlgorithm: algorithm, privateKey: privateKey)!
+        let signer = Signer(signingAlgorithm: algorithm, key: privateKey)!
         let jws = try! JWS(header: header, payload: payload, signer: signer)
         let compact = jws.compactSerializedString
     }
-
+#endif
     // MARK: - EC Tests
 
     @available(*, deprecated)

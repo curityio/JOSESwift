@@ -24,8 +24,10 @@ import Foundation
 
 @available(iOS 13.0, *)
 internal struct SecureEnclaveSigner: SignerProtocol {
+    typealias KeyType = SecureEnclave.P256.Signing.PrivateKey
+    
     let algorithm: SignatureAlgorithm
-    let privateKey: SecureEnclave.P256.Signing.PrivateKey
+    let privateKey: KeyType
 
     func sign(_ signingInput: Data) throws -> Data {
         try privateKey.signature(for: signingInput).rawRepresentation
