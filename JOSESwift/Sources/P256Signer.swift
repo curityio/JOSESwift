@@ -28,7 +28,7 @@ internal struct P256Signer: SignerProtocol {
     
     let algorithm: SignatureAlgorithm
     let privateKey: KeyType
-
+    
     func sign(_ signingInput: Data) throws -> Data {
         try privateKey.signature(for: signingInput).rawRepresentation
     }
