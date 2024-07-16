@@ -1,9 +1,9 @@
 //
-//  SecureEnclaveSigner.swift
+//  P256Signer.swift
 //  JOSESwift
 //
 //  ---------------------------------------------------------------------------
-//  Copyright 2020 Curity AB
+//  Copyright 2024 Curity AB
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,12 +23,12 @@ import CryptoKit
 import Foundation
 
 @available(iOS 13.0, *)
-internal struct SecureEnclaveSigner: SignerProtocol {
-    typealias KeyType = SecureEnclave.P256.Signing.PrivateKey
+internal struct P256Signer: SignerProtocol {
+    typealias KeyType = P256.Signing.PrivateKey
     
     let algorithm: SignatureAlgorithm
     let privateKey: KeyType
-
+    
     func sign(_ signingInput: Data) throws -> Data {
         try privateKey.signature(for: signingInput).rawRepresentation
     }

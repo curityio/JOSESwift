@@ -1,9 +1,9 @@
 //
-//  SecureEnclaveVerifier.swift
+//  P256Verifier.swift
 //  JOSESwift
 //
 //  ---------------------------------------------------------------------------
-//  Copyright 2020 Curity AB
+//  Copyright 2024 Curity AB
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -23,9 +23,11 @@ import CryptoKit
 import Foundation
 
 @available(iOS 13.0, *)
-internal struct SecureEnclaveVerifier: VerifierProtocol {
+internal struct P256Verifier: VerifierProtocol {
+    typealias KeyType = P256.Signing.PublicKey
+    
     var algorithm: SignatureAlgorithm
-    let publicKey: P256.Signing.PublicKey
+    let publicKey: KeyType
     
     func verify(_ signingInput: Data, against signature: Data) throws -> Bool {
         try publicKey.isValidSignature(P256.Signing.ECDSASignature(rawRepresentation: signature), for: signingInput)

@@ -70,10 +70,10 @@ struct Verifier {
             if type(of: key) is ECVerifier.KeyType.Type {
                 self.verifier = ECVerifier(algorithm: verifyingAlgorithm, publicKey: key as! ECVerifier.KeyType)
             } else if #available(iOS 13.0, *),
-                      type(of: key) is P256.Signing.PublicKey.Type {
-                self.verifier = SecureEnclaveVerifier(
+                      type(of: key) is P256Verifier.KeyType.Type {
+                self.verifier = P256Verifier(
                     algorithm: verifyingAlgorithm,
-                    publicKey: key as! P256.Signing.PublicKey
+                    publicKey: key as! P256Verifier.KeyType
                 )
             } else {
                 return nil
