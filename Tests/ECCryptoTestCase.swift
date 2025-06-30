@@ -26,7 +26,7 @@
 import XCTest
 import Foundation
 
-struct ECTestKeyData {
+struct ECTestKeyData: @unchecked Sendable {
 
     let privateKeyTag: String
     let compactSerializedJWSSimpleHeaderConst: String

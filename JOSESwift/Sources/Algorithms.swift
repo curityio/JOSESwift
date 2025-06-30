@@ -113,7 +113,7 @@ enum HMACAlgorithm: String {
 /// An algorithm for JWK Thumbprint calculation.
 ///
 /// - SHA256
-enum JWKThumbprintAlgorithm: String {
+enum JWKThumbprintAlgorithm: String, Sendable {
     case SHA256
 }
 

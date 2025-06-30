@@ -25,7 +25,7 @@
 import Foundation
 
 /// JWK related errors
-internal enum JWKError: Error {
+internal enum JWKError: Error, Sendable {
     case cannotExtractRSAPublicKeyComponents
     case cannotExtractRSAPrivateKeyComponents
     case notAPublicKey
@@ -40,7 +40,7 @@ internal enum JWKError: Error {
 /// The key type parameter of a JWK identifies the cryptographic algorithm
 /// family used with the key(s) represented by a JWK.
 /// See [RFC-7518](https://tools.ietf.org/html/rfc7518#section-7.4) for details.
-enum JWKKeyType: String, Codable {
+enum JWKKeyType: String, Codable, Sendable {
     case RSA = "RSA"
     case OCT = "oct"
     case EC = "EC"
@@ -48,7 +48,7 @@ enum JWKKeyType: String, Codable {
 
 /// A JWK object that represents a key or a key pair of a certain type.
 /// Check `KeyType` for the supported key types.
-protocol JWK: Codable {
+protocol JWK: Codable, Sendable {
     /// The cryptographic algorithm family used with the JWK.
     var keyType: JWKKeyType { get }
 
