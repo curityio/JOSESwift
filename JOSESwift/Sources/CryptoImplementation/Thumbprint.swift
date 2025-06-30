@@ -24,7 +24,7 @@
 import Foundation
 import CommonCrypto
 
-enum ThumbprintError: Error {
+enum ThumbprintError: Error, Sendable {
     case inputMustBeGreaterThanZero
 }
 
