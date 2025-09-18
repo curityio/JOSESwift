@@ -312,7 +312,3 @@ struct RSAPrivateKey: JWK {
 // MARK: Key Pair
 
 typealias RSAKeyPair = RSAPrivateKey
-
-// Mark RSA key types as Sendable. These types only contain value types (Strings/dictionaries).
-//extension RSAPublicKey: @unchecked Sendable {}
-//extension RSAPrivateKey: @unchecked Sendable {}

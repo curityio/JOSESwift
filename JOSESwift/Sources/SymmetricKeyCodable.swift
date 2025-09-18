@@ -70,12 +70,7 @@ extension SymmetricKey: Decodable {
         let key = try symmetricKeyParameters.decode(String.self, forKey: .key)
 
         guard let keyData = Data(base64URLEncoded: key) else {
-            throw DecodingError.dataCorrupted(
-                DecodingError.Context(
-                    codingPath: [SymmetricKeyParameter.key],
-                    debugDescription: "Wrong parameter: key is not base64url-encoded"
-                )
-            )
+            throw JOSESwiftError.symmetricKeyNotBase64URLEncoded
         }
 
         self.init(key: keyData, additionalParameters: parameters)
