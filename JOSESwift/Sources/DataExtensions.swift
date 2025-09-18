@@ -28,7 +28,7 @@ extension Data {
     ///
     /// - Parameter base64URLString: The base64url encoded string to parse.
     /// - Returns: `nil` if the input is not recognized as valid base64url.
-    init?(base64URLEncoded base64URLString: String) {
+    nonisolated init?(base64URLEncoded base64URLString: String) {
         var s = base64URLString
             .replacingOccurrences(of: "-", with: "+")
             .replacingOccurrences(of: "_", with: "/")
@@ -59,7 +59,7 @@ extension Data {
     /// Returns a base64url encoded string.
     ///
     /// - Returns: The base64url encoded string.
-    func base64URLEncodedString() -> String {
+    nonisolated func base64URLEncodedString() -> String {
         let s = self.base64EncodedString()
         return s
             .replacingOccurrences(of: "=", with: "")
