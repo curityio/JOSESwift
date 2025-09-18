@@ -122,7 +122,7 @@ struct RSAPublicKey: JWK {
     ///   - exponent: The public exponent value for the RSA public key in `base64urlUInt` encoding
     ///               as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public init(modulus: String, exponent: String, additionalParameters parameters: [String: String] = [:]) {
+    public nonisolated init(modulus: String, exponent: String, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .RSA
         self.modulus = modulus
         self.exponent = exponent
@@ -231,7 +231,7 @@ struct RSAPrivateKey: JWK {
     ///    - privateExponent: The private exponent value for the RSA private key in `base64urlUInt` encoding
     ///               as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public init(modulus: String, exponent: String, privateExponent: String, additionalParameters parameters: [String: String] = [:]) {
+    public nonisolated init(modulus: String, exponent: String, privateExponent: String, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .RSA
         self.modulus = modulus
         self.exponent = exponent
@@ -312,3 +312,7 @@ struct RSAPrivateKey: JWK {
 // MARK: Key Pair
 
 typealias RSAKeyPair = RSAPrivateKey
+
+// Mark RSA key types as Sendable. These types only contain value types (Strings/dictionaries).
+//extension RSAPublicKey: @unchecked Sendable {}
+//extension RSAPrivateKey: @unchecked Sendable {}

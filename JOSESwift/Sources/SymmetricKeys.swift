@@ -76,7 +76,7 @@ struct SymmetricKey: JWK {
     /// - Parameters:
     ///   - key: The octet sequence containing the key data.
     ///   - parameters: Additional JWK parameters.
-    public init(key: Data, additionalParameters parameters: [String: String] = [:]) {
+    public nonisolated init(key: Data, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .OCT
         self.key = key.base64URLEncodedString()
 
@@ -107,7 +107,7 @@ struct SymmetricKey: JWK {
     }
 
     /// Creates a `SymmetricKey` from the JSON representation of a symmetric key JWK.
-    public init(data: Data) throws {
+    public nonisolated init(data: Data) throws {
         self = try JSONDecoder().decode(SymmetricKey.self, from: data)
     }
 

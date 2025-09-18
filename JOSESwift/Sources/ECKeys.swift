@@ -130,7 +130,7 @@ struct ECPublicKey: JWK {
     ///   - y: The y coordinate for the EC public key in `base64urlUInt` encoding
     ///        as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public init(crv: ECCurveType, x: String, y: String, additionalParameters parameters: [String: String] = [:]) {
+    nonisolated public init(crv: ECCurveType, x: String, y: String, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .EC
         self.crv = crv
         self.x = x
@@ -173,8 +173,9 @@ struct ECPublicKey: JWK {
         )
     }
 
-    public init(data: Data) throws {
-        self = try JSONDecoder().decode(ECPublicKey.self, from: data)
+    public nonisolated init(data: Data) throws {
+        let decoded = try JSONDecoder().decode(ECPublicKey.self, from: data)
+        self.init(crv: decoded.crv, x: decoded.x, y: decoded.y, additionalParameters: decoded.parameters)
     }
 
     /// Converts the `ECPublicKey` JWK to the specified type.
@@ -254,7 +255,7 @@ struct ECPrivateKey: JWK {
     ///   - privateKey: The private key component for the EC public key in `base64urlUInt` encoding
     ///                 as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public init(crv: String, x: String, y: String, privateKey: String, additionalParameters parameters: [String: String] = [:]) throws {
+    public nonisolated init(crv: String, x: String, y: String, privateKey: String, additionalParameters parameters: [String: String] = [:]) throws {
         self.keyType = .EC
 
         guard let curve = ECCurveType(rawValue: crv) else {

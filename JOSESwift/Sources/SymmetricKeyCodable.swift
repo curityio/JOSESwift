@@ -24,7 +24,7 @@
 import Foundation
 
 extension SymmetricKey: Encodable {
-    func encode(to encoder: Encoder) throws {
+    public nonisolated func encode(to encoder: Encoder) throws {
         var commonParameters = encoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -45,7 +45,7 @@ extension SymmetricKey: Encodable {
 }
 
 extension SymmetricKey: Decodable {
-    init(from decoder: Decoder) throws {
+    public nonisolated init(from decoder: Decoder) throws {
         let commonParameters = try decoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -70,7 +70,12 @@ extension SymmetricKey: Decodable {
         let key = try symmetricKeyParameters.decode(String.self, forKey: .key)
 
         guard let keyData = Data(base64URLEncoded: key) else {
-            throw JOSESwiftError.symmetricKeyNotBase64URLEncoded
+            throw DecodingError.dataCorrupted(
+                DecodingError.Context(
+                    codingPath: [SymmetricKeyParameter.key],
+                    debugDescription: "Wrong parameter: key is not base64url-encoded"
+                )
+            )
         }
 
         self.init(key: keyData, additionalParameters: parameters)
