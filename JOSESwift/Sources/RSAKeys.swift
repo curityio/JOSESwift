@@ -97,7 +97,7 @@ struct RSAPublicKey: JWK {
     public let parameters: [String: String]
 
     /// The RSA required parameters
-    public var requiredParameters: [String: String] {
+    nonisolated public var requiredParameters: [String: String] {
         [
             JWKParameter.keyType.rawValue: self.keyType.rawValue,
             RSAParameter.modulus.rawValue: self.modulus,
@@ -122,7 +122,7 @@ struct RSAPublicKey: JWK {
     ///   - exponent: The public exponent value for the RSA public key in `base64urlUInt` encoding
     ///               as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public nonisolated init(modulus: String, exponent: String, additionalParameters parameters: [String: String] = [:]) {
+    nonisolated public init(modulus: String, exponent: String, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .RSA
         self.modulus = modulus
         self.exponent = exponent
@@ -159,7 +159,7 @@ struct RSAPublicKey: JWK {
     }
 
     /// Creates an `RSAPublicKey` from the JSON representation of a public key JWK.
-    public init(data: Data) throws {
+    nonisolated public init(data: Data) throws {
         self = try JSONDecoder().decode(RSAPublicKey.self, from: data)
     }
 
@@ -204,7 +204,7 @@ struct RSAPrivateKey: JWK {
     public let parameters: [String: String]
 
     /// The RSA required parameters
-    public var requiredParameters: [String: String] {
+    nonisolated public var requiredParameters: [String: String] {
         [
             JWKParameter.keyType.rawValue: self.keyType.rawValue,
             RSAParameter.modulus.rawValue: self.modulus,
@@ -231,7 +231,7 @@ struct RSAPrivateKey: JWK {
     ///    - privateExponent: The private exponent value for the RSA private key in `base64urlUInt` encoding
     ///               as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public nonisolated init(modulus: String, exponent: String, privateExponent: String, additionalParameters parameters: [String: String] = [:]) {
+    nonisolated public init(modulus: String, exponent: String, privateExponent: String, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .RSA
         self.modulus = modulus
         self.exponent = exponent
@@ -271,7 +271,7 @@ struct RSAPrivateKey: JWK {
     }
 
     /// Creates an `RSAPrivateKey` from the JSON representation of a private key JWK.
-    public init(data: Data) throws {
+    nonisolated public init(data: Data) throws {
         self = try JSONDecoder().decode(RSAPrivateKey.self, from: data)
     }
 

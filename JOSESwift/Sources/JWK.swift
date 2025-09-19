@@ -57,7 +57,7 @@ protocol JWK: Codable, Sendable {
     /// [RFC 7518, Section 6](https://tools.ietf.org/html/rfc7518#section-6) for possible parameters.
     var parameters: [String: String] { get }
 
-    var requiredParameters: [String: String] { get }
+    nonisolated var requiredParameters: [String: String] { get }
 
     /// Accesses the specified parameter.
     /// The parameters of the JWK representing the properties of the key(s), including the value(s).
@@ -72,7 +72,7 @@ protocol JWK: Codable, Sendable {
     /// - Parameter data: The JWK in JSON serialization.
     /// - Throws: If the data is not valid JSON, this method throws a `DecodingError` error.
     ///           If a value within the JSON fails to decode, this method throws the corresponding error.
-    init(data: Data) throws
+    nonisolated init(data: Data) throws
 
     /// Computes the JSON representation of the JWK.
     ///
@@ -94,7 +94,7 @@ protocol JWK: Codable, Sendable {
     /// - Returns: he base64url encoded thumbprint of the required members of the JWK key.
     /// - Throws: A `JOSESwiftError` indicating any errors.
     @available(iOS 11.0, *)
-    func thumbprint(algorithm: JWKThumbprintAlgorithm) throws -> String
+    nonisolated func thumbprint(algorithm: JWKThumbprintAlgorithm) throws -> String
 
     /// Use the thumbprint as the keyId.
     ///  See [RFC-7638, Section 3.2](https://tools.ietf.org/html/rfc7638#section-3.2)
@@ -109,7 +109,7 @@ protocol JWK: Codable, Sendable {
 
 extension JWK {
     @available(iOS 11.0, *)
-    func thumbprint(algorithm: JWKThumbprintAlgorithm = .SHA256) throws -> String {
+    nonisolated func thumbprint(algorithm: JWKThumbprintAlgorithm = .SHA256) throws -> String {
         guard let json = try? JSONSerialization.data(withJSONObject: requiredParameters, options: .sortedKeys) else {
             throw JOSESwiftError.thumbprintSerialization
         }

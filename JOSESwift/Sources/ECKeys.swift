@@ -99,7 +99,7 @@ struct ECPublicKey: JWK {
     public let parameters: [String: String]
 
     /// The EC public key required parameters
-    public var requiredParameters: [String: String] {
+    nonisolated public var requiredParameters: [String: String] {
         [
             JWKParameter.keyType.rawValue: self.keyType.rawValue,
             ECParameter.curve.rawValue: self.crv.rawValue,
@@ -173,7 +173,7 @@ struct ECPublicKey: JWK {
         )
     }
 
-    public nonisolated init(data: Data) throws {
+    nonisolated public init(data: Data) throws {
         let decoded = try JSONDecoder().decode(ECPublicKey.self, from: data)
         self.init(crv: decoded.crv, x: decoded.x, y: decoded.y, additionalParameters: decoded.parameters)
     }
@@ -219,7 +219,7 @@ struct ECPrivateKey: JWK {
     public let parameters: [String: String]
 
     /// The EC private key required parameters
-    public var requiredParameters: [String: String] {
+    nonisolated public var requiredParameters: [String: String] {
         [
             JWKParameter.keyType.rawValue: self.keyType.rawValue,
             ECParameter.curve.rawValue: self.crv.rawValue,
@@ -255,7 +255,7 @@ struct ECPrivateKey: JWK {
     ///   - privateKey: The private key component for the EC public key in `base64urlUInt` encoding
     ///                 as specified in [RFC-7518, Section 2](https://tools.ietf.org/html/rfc7518#section-2).
     ///   - parameters: Additional JWK parameters.
-    public nonisolated init(crv: String, x: String, y: String, privateKey: String, additionalParameters parameters: [String: String] = [:]) throws {
+    nonisolated public init(crv: String, x: String, y: String, privateKey: String, additionalParameters parameters: [String: String] = [:]) throws {
         self.keyType = .EC
 
         guard let curve = ECCurveType(rawValue: crv) else {
@@ -302,7 +302,7 @@ struct ECPrivateKey: JWK {
         )
     }
 
-    public init(data: Data) throws {
+    nonisolated public init(data: Data) throws {
         self = try JSONDecoder().decode(ECPrivateKey.self, from: data)
     }
 

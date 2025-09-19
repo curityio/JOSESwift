@@ -24,7 +24,7 @@
 import Foundation
 
 extension ECPublicKey: Encodable {
-    public nonisolated func encode(to encoder: Encoder) throws {
+    nonisolated public func encode(to encoder: Encoder) throws {
         var commonParameters = encoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -47,7 +47,7 @@ extension ECPublicKey: Encodable {
 }
 
 extension ECPublicKey: Decodable {
-    public nonisolated init(from decoder: Decoder) throws {
+    nonisolated public init(from decoder: Decoder) throws {
         let commonParameters = try decoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -83,7 +83,7 @@ extension ECPublicKey: Decodable {
 }
 
 extension ECPrivateKey: Encodable {
-    public nonisolated func encode(to encoder: Encoder) throws {
+    nonisolated public func encode(to encoder: Encoder) throws {
         var commonParameters = encoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.
@@ -107,7 +107,7 @@ extension ECPrivateKey: Encodable {
 }
 
 extension ECPrivateKey: Decodable {
-    public nonisolated init(from decoder: Decoder) throws {
+    nonisolated public init(from decoder: Decoder) throws {
         let commonParameters = try decoder.container(keyedBy: JWKParameter.self)
 
         // The key type parameter is required.

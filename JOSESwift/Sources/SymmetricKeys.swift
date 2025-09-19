@@ -60,7 +60,7 @@ struct SymmetricKey: JWK {
     public let parameters: [String: String]
 
     /// The symmetric key required parameters
-    public var requiredParameters: [String: String] {
+    nonisolated public var requiredParameters: [String: String] {
         [
             JWKParameter.keyType.rawValue: self.keyType.rawValue,
             SymmetricKeyParameter.key.rawValue: self.key
@@ -76,7 +76,7 @@ struct SymmetricKey: JWK {
     /// - Parameters:
     ///   - key: The octet sequence containing the key data.
     ///   - parameters: Additional JWK parameters.
-    public nonisolated init(key: Data, additionalParameters parameters: [String: String] = [:]) {
+    nonisolated public init(key: Data, additionalParameters parameters: [String: String] = [:]) {
         self.keyType = .OCT
         self.key = key.base64URLEncodedString()
 
@@ -107,7 +107,7 @@ struct SymmetricKey: JWK {
     }
 
     /// Creates a `SymmetricKey` from the JSON representation of a symmetric key JWK.
-    public nonisolated init(data: Data) throws {
+    nonisolated public init(data: Data) throws {
         self = try JSONDecoder().decode(SymmetricKey.self, from: data)
     }
 

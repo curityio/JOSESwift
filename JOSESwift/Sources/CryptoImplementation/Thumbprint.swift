@@ -28,7 +28,7 @@ enum ThumbprintError: Error, Sendable {
     case inputMustBeGreaterThanZero
 }
 
-fileprivate extension JWKThumbprintAlgorithm {
+nonisolated fileprivate extension JWKThumbprintAlgorithm {
     var outputLenght: Int {
         switch self {
         case .SHA256:
@@ -51,7 +51,7 @@ internal struct Thumbprint {
     ///   - input: The input to calculate a hash for.
     ///   - algorithm: The algorithm used to calculate the hash.
     /// - Returns: The calculated hash in base64URLEncoding.
-    static func calculate(from input: Data, algorithm: JWKThumbprintAlgorithm) throws -> String {
+    nonisolated static func calculate(from input: Data, algorithm: JWKThumbprintAlgorithm) throws -> String {
         guard input.count > 0 else {
             throw ThumbprintError.inputMustBeGreaterThanZero
         }
